@@ -1,0 +1,19 @@
+@import '../../../sass/variables';
+
+#menuIndicator {
+  background-color: $yellow;
+  padding: 15px;
+  position: fixed;
+  top: 350px;
+  left: -135px;
+  z-index: 1000;
+  color: $black;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  font-weight: bold;
+  border: 1px double $hamburger-menu;
+  transform: rotate(90deg);
+  height: 60px;
+  width: 330px;
+  text-align: center;
+}

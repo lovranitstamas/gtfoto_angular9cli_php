@@ -1,0 +1,79 @@
+<ng-container *ngIf="!loading && !serverError; else loadingWarning">
+  <ng-container *ngIf="!emptyList; else warningMessage">
+
+    <app-portfolio-searching-box *ngIf="!emptyList && !serverError"
+                                 (valueChange)='detectSearching($event)'></app-portfolio-searching-box>
+
+    <div class="site-wrap">
+
+      <main class="main-content">
+        <div class="container-fluid photos">
+
+          <div class="row align-items-stretch">
+
+            <div class="card-columns" data-aos="fade-up">
+              <div class="card" *ngFor="let picture of masonryImages;">
+                  <app-portfoliocard
+                  [picture]="picture"
+                  nextLabel="Szerkesztés"
+                  [isAdmin]=isAdmin
+                  [isLoggedIn]=isLoggedIn
+                >
+                </app-portfoliocard>
+                <!--<div class="card-body">
+                  <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
+                    <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid card-img-top">
+                    <div class="photo-text-more">
+                      <span class="icon icon-search"></span>
+                    </div>
+                  </a>
+                </div>
+                <div class="card-footer">
+                  <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
+                    <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
+                </div>-->
+              </div>
+            </div>
+
+            <!--<div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" *ngFor="let picture of masonryImages;">
+              <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
+                <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                  <span class="icon icon-search"></span>
+                </div>
+              </a>
+              <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
+                <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
+            </div>-->
+
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <button class="btn btn-full-list-view bg-warning my-3"
+            type="button"
+            *ngIf="limit < aModifiedResultObjects.length && aModifiedResultObjects.length != masonryImages.length"
+            (click)="showMoreImages()"><span>Mutasd a többi képet</span>
+    </button>
+
+
+  </ng-container>
+  <ng-template #warningMessage>
+    <h2 class="text-center">A fotóalbum üres</h2>
+  </ng-template>
+  <app-portfolio-upload-link></app-portfolio-upload-link>
+</ng-container>
+<ng-template #loadingWarning>
+  <app-loading-spinner [loaderWidth]="100" [loaderHeight]="100" class="mb-5" *ngIf="!serverError"></app-loading-spinner>
+</ng-template>
+
+<div class="row" *ngIf="serverError">
+  <div class="col text-center">
+    <h1 class="display-1 py-2 server-error">Oops!</h1>
+    <h1 class="p-2">{{serverErrorCode}}</h1>
+    <h2 class="p-2">Nem várt hiba! Kérem forduljon a rendszergazdához.</h2>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<!--<figure class="figure">
+  <div class="hover-zoom-box">
+    <img alt="Card image cap" class="card-img-top img-fluid" [src]="picture.fileURLFunction">
+  </div>
+  <figcaption class="figure-caption text-right">
+    {{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
+    <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">{{nextLabel}}</a>
+  </figcaption>
+</figure>-->
+
+
+<div class="card-body">
+  <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
+    <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid card-img-top">
+    <div class="photo-text-more">
+      <h3><i class="fa fa-search text-white" aria-hidden="true"></i></h3>
+    </div>
+  </a>
+</div>
+<div class="card-footer">
+  <p><!--{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;-->
+    <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
+</div>

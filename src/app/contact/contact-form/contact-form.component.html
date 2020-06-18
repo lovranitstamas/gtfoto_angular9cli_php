@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="sendMessage(form)">
+  <div class="form-row mb-3">
+    <div class="form-group col-md-6">
+      <label for="inputName">Név *</label>
+      <input formControlName="sender"
+             type="text"
+             class="form-control"
+             id="inputName"
+             [ngClass]="{'is-invalid':submitted && form.get('sender').invalid}">
+      <div class="invalid-feedback mt-3">Kérem adja meg a nevét</div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail">E-mail cím *</label>
+      <input formControlName="email"
+             type="email"
+             class="form-control"
+             id="inputEmail"
+             [ngClass]="{'is-invalid':submitted && form.get('email').invalid}">
+      <div class="invalid-feedback mt-3" *ngIf="form.get('email').hasError('required')">Kérem adja meg az e-mail
+        címét</div>
+      <div class="invalid-feedback"
+           *ngIf="form.get('email').hasError('emailFormat') &&
+                  !form.get('email').hasError('required')">E-mail formátum nem megfelelő
+      </div>
+    </div>
+  </div>
+  <div class="form-group mb-4">
+    <label for="inputSubject">Tárgy *</label>
+    <input formControlName="subject"
+           type="text"
+           class="form-control"
+           id="inputSubject"
+           [ngClass]="{'is-invalid':submitted && form.get('subject').invalid}">
+    <div class="invalid-feedback mt-3">Kérem adja meg a levél tárgyát</div>
+  </div>
+  <div class="form-group mb-4">
+    <label for="inputContent">Üzenet *</label>
+    <textarea formControlName="message"
+              class="form-control"
+              id="inputContent"
+              rows="6"
+              [ngClass]="{'is-invalid':submitted && form.get('message').invalid}"></textarea>
+    <div class="invalid-feedback mt-3">Kérem adja meg az üzenet tartalmát</div>
+  </div>
+  <div class="form-row">
+    <div class="col-sm-10 col-md-4">
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="inactiveStateOfSendButton">KÜLDÉS</button>
+    </div>
+    <div class="col-sm-2 col-md-8" *ngIf="inactiveStateOfSendButton">
+      <app-loading-spinner [loaderWidth]="35" [loaderHeight]="35"></app-loading-spinner>
+    </div>
+  </div>
+  <alert type="success" dismissOnTimeout="5000" *ngIf="submitSuccessAlert">
+    Üzenet sikeresen elküldve
+  </alert>
+  <alert type="danger" dismissOnTimeout="20000" *ngIf="submitErrorAlert">
+    <strong>Valami hiba történt...</strong> Próbáld meg újra vagy jelezd a supportnak.
+  </alert>
+</form>
+<!--{{form.value | json}}-->
+<!--{{form.get('message').errors | json}}-->

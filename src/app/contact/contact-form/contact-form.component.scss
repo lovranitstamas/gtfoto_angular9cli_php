@@ -1,0 +1,23 @@
+@import "../../../sass/variables";
+
+.invalid-feedback {
+  font-size: medium;
+  color: $red;
+  background-color: $white;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid $red;
+
+  input, textarea {
+    border: none !important;
+  }
+}
+
+.form-control:focus {
+  background-color: $dark-grey-transparent;
+  border-color: $yellow;
+  outline: none;
+  box-shadow: none;
+  color: $white;
+}

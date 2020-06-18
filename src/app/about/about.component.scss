@@ -1,0 +1,15 @@
+@import "../../sass/variables";
+
+.please-contact-us, .about-me {
+  border-radius: 5px;
+  border: 5px solid $yellow;
+  background-color: $light-grey-transparent;
+}
+
+@media only screen and (max-width: 575px) {
+  .please-contact-us, .about-me {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

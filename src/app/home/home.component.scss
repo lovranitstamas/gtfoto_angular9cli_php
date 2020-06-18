@@ -1,0 +1,129 @@
+@import '../../sass/variables';
+::ng-deep carousel .carousel {
+  margin-top: -60px;
+
+  .carousel-indicators {
+    bottom: 50px;
+
+    li {
+      width: 15px;
+      height: 15px;
+      border-radius: 10px;
+      background: transparent;
+      border: 2px solid $white;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    li.active {
+      background-color: $white;
+    }
+  }
+
+  .carousel-inner {
+    opacity: 1;
+    background-color: $black;
+
+    slide {
+      -webkit-transition-property: opacity;
+      transition-property: opacity;
+
+      height: 100vh;
+      min-height: 600px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      .carousel-caption {
+        bottom: 70px;
+      }
+    }
+  }
+
+  .carousel-inner .item {
+    opacity: 0;
+    display: table-cell;
+    -webkit-transition: opacity 3s ease;
+    -moz-transition: opacity 3s ease;
+    -o-transition: opacity 3s ease;
+    transition: opacity 3s ease;
+  }
+
+  .carousel-inner .active {
+    opacity: 1;
+    width: 100%;
+    -webkit-transition: opacity 3s ease;
+    -moz-transition: opacity 3s ease;
+    -o-transition: opacity 3s ease;
+    transition: opacity 3s ease;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    display: block;
+    border: 2px solid $white;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 30px;
+    background-size: 45% 45%;
+    cursor: pointer;
+  }
+}
+
+section.reservation {
+  .card {
+    background-image: url('../../../src/assets/reservation.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+  }
+}
+
+section.portfolio {
+  background-color: $hamburger-menu;
+
+  .card {
+    background-color: $menu-background;
+    border: 1px solid $yellow;
+    width: 98%;
+
+    .card-header {
+      height: 70px;
+    }
+
+    .card-body {
+      hr {
+        background-color: $yellow;
+        height: 1px;
+      }
+    }
+  }
+
+  .card:nth-child(2) {
+    .card-assets-top,
+    .card-body {
+      position: relative;
+      top: -60px;
+    }
+  }
+}
+
+/*media queries*/
+@media only screen and (max-width: 575px) {
+  ::ng-deep carousel .carousel-control {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  section.reservation {
+    padding: 20px;
+    border-top: 3px solid $yellow;
+    border-bottom: 3px solid $red;
+    background-image: linear-gradient($yellow, $red),
+    linear-gradient($yellow, $red);
+    background-size: 3px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../../sass/variables';
+
+.card-body {
+  padding: 0;
+  color: $yellow;
+  font-size: large;
+
+  a {
+    color: $yellow;
+
+    &:hover {
+      color: $yellow;
+    }
+  }
+
+  img {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  padding: 0;
+}
+
+
+/*.figure-caption {
+  color: $yellow;
+  font-size: large;
+
+  a {
+    color: $yellow;
+    &:hover{
+      color: $yellow;
+    }
+  }
+}*/
+

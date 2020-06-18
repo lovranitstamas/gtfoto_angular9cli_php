@@ -1,0 +1,66 @@
+@import "../../../sass/variables";
+
+nav {
+  background-color: $menu-background;
+
+  background-repeat: repeat-x;
+  background-position-x: center;
+  text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white,
+  1px 1px 0 $white;
+
+  button.navbar-toggler {
+    border: 2px solid $hamburger-menu;
+    border-radius: 5px;
+
+    div.navbar-toggler-icon div {
+      display: block;
+      width: 30px;
+      border-bottom: solid 5px $hamburger-menu;
+      height: 9px;
+    }
+  }
+
+  ul {
+    position: relative;
+
+    li.nav-item {
+      a.nav-link {
+        color: $nav-link-text-color;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .dropdown-item:hover {
+        background-color: $hamburger-menu;
+        color: $menu-background;
+        text-shadow: 0 0 2px $yellow;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  nav {
+    ul {
+      li.nav-item:hover {
+        background-color: $yellow;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+//not necessary
+@media only screen and (max-width: 991px) {
+  nav {
+    ul {
+      li.nav-item {
+        .dropdown-menu {
+          top: 0 !important;
+        }
+      }
+    }
+  }
+}
+

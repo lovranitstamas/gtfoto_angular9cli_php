@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row py-4 justify-content-center">
+    <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+
+      <div class="card login-card border-secondary mt-3 mb-4">
+        <div class="card-header login-card-header text-uppercase">Bejelentkezés</div>
+        <div class="card-body">
+
+          <form [formGroup]="loginForm"
+                (ngSubmit)="login(loginForm)">
+
+            <div class="form-group font-weight-bold text-center">
+              <alert dismissible="true"
+                     type="danger" *ngIf="(loginForm.get('loginEmail').hasError('required') ||
+                      loginPassword.hasError('required')) && onProcess"
+                     (onClose)="closeAlert()">Hiányos adatbevitel</alert>
+              <alert dismissible="true"
+                     type="danger" *ngIf="loginForm.get('loginEmail').hasError('invalidEmail') &&
+                      !loginForm.get('loginEmail').hasError('required') && onProcess"
+                     (onClose)="closeAlert()">E-mail cím formátum nem megfelelő</alert>
+            </div>
+
+            <div class="form-group">
+              <label for="loginEmail">E-mail cím</label>
+              <input class="form-control"
+                     id="loginEmail"
+                     type="text"
+                     placeholder="E-mail cím"
+                     formControlName="loginEmail"
+              >
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Jelszó</label>
+              <input class="form-control"
+                     id="loginPassword"
+                     type="password"
+                     placeholder="Jelszó"
+                     [formControl]="loginPassword">
+            </div>
+
+            <div class="form-group font-weight-bold text-center">
+              <alert dismissible="true"
+                     type="danger" *ngIf="loginAuthInfo"
+                     (onClose)="closeAlert()">E-mail cím és/vagy jelszó nem megfelelő</alert>
+            </div>
+            <div class="form-group font-weight-bold text-center">
+              <alert dismissible="true"
+                     type="danger" *ngIf="messageToWebmaster"
+                     (onClose)="closeAlert()">Nem várt hiba! Kérem keresse a rendszergazdát</alert>
+            </div>
+
+            <button class="btn btn-login btn-lg btn-block bg-warning mt-3"
+                    type="submit"><span>Belépés</span></button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
