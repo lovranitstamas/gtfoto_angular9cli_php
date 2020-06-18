@@ -75,14 +75,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    //this._routerSub.unsubscribe();
-    //this._routerSubEnd.unsubscribe();
+    // this._routerSub.unsubscribe();
+    // this._routerSubEnd.unsubscribe();
   }
 
   clickOnRouterLink() {
     this.userService.detectTimeoutSession().subscribe(
       (response) => {
-        console.log(response);
         if (response.status_code_header === 200) {
           this.remoteUser = new UserModel();
           this.remoteUser.idFunction = response.body['user'].id;
