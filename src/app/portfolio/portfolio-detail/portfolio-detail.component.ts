@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {PortfolioService} from '../../shared/portfolio.service';
 import {PortfolioPictureModel} from '../../shared/portfolio-picture-model';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -21,6 +21,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   selectedFiles: FileList;
   file: boolean | File;
   nodes: Array<{ id: number, category: string }> = [];
+  @ViewChild('pictureURL') pictureURL: any;
 
   // close all subscription
   private _destroy$: Subject<void> = new Subject<void>();
@@ -34,8 +35,8 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const node = this._route.snapshot.params['node'];
-    const portfolioPictureId = this._route.snapshot.params['id'];
+    const node = this._route.snapshot.params.node;
+    const portfolioPictureId = this._route.snapshot.params.id;
 
     // create an empty model while we wait for data
     this.portfolioPicture = new PortfolioPictureModel();
@@ -57,27 +58,28 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$))
         .subscribe(evm => {
           if (evm.status_code_header === 200) {
-            if (evm.body['picture'].id === null) {
-              this._router.navigate(['/home'])
+            if (evm.body.picture.id === null) {
+              this._router.navigate(['/home']);
             }
 
-            this.portfolioPicture.idFunction = evm.body['picture'].id;
-            this.portfolioPicture.nodeIdFunction = evm.body['picture'].nodeId;
-            this.portfolioPicture.subfolderFunction = evm.body['picture'].subfolder;
-            this.portfolioPicture.categoryFunction = evm.body['picture'].category;
-            this.portfolioPicture.titleFunction = evm.body['picture'].title;
+            this.portfolioPicture.idFunction = evm.body.picture.id;
+            this.portfolioPicture.nodeIdFunction = evm.body.picture.nodeId;
+            this.portfolioPicture.subfolderFunction = evm.body.picture.subfolder;
+            this.portfolioPicture.categoryFunction = evm.body.picture.category;
+            this.portfolioPicture.titleFunction = evm.body.picture.title;
 
-            if (this.portfolioPicture.subfolderFunction != 'child-and-family' &&
-              this.portfolioPicture.subfolderFunction != 'christening' &&
-              this.portfolioPicture.subfolderFunction != 'kindergarten' &&
-              this.portfolioPicture.subfolderFunction != 'portrait' &&
-              this.portfolioPicture.subfolderFunction != 'pregnant') {
-              this.portfolioPicture.fileURLFunction = `${this.apiUrl}uploads/gallery/thumbnail/wedding/${node}/${evm.body['picture'].filename}`;
+            if (this.portfolioPicture.subfolderFunction !== 'child-and-family' &&
+              this.portfolioPicture.subfolderFunction !== 'christening' &&
+              this.portfolioPicture.subfolderFunction !== 'kindergarten' &&
+              this.portfolioPicture.subfolderFunction !== 'portrait' &&
+              this.portfolioPicture.subfolderFunction !== 'pregnant') {
+              this.portfolioPicture.fileURLFunction =
+                `${this.apiUrl}uploads/gallery/thumbnail/wedding/${node}/${evm.body.picture.filename}`;
             } else {
-              this.portfolioPicture.fileURLFunction = `${this.apiUrl}uploads/gallery/thumbnail/${node}/${evm.body['picture'].filename}`;
+              this.portfolioPicture.fileURLFunction = `${this.apiUrl}uploads/gallery/thumbnail/${node}/${evm.body.picture.filename}`;
             }
 
-            this.portfolioPicture.dateOfEventFunction = evm.body['picture'].createDate;
+            this.portfolioPicture.dateOfEventFunction = evm.body.picture.createDate;
             this.setNode = true;
           } else {
             console.log(evm.status_code_header);
@@ -144,7 +146,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
 
   delete() {
     this.messageToWebmaster = false;
-    this.messageError = "";
+    this.messageError = '';
     this._portfolioService.delete(this.portfolioPicture).pipe(
       takeUntil(this._destroy$))
       .subscribe(
@@ -166,16 +168,17 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
       case 422:
         console.log(err.status);
         this.messageToWebmaster = true;
-        this.messageError = "Feldolgozhatatlan kérés! Kérem forduljon  arendszergazdához";
+        this.messageError = 'Feldolgozhatatlan kérés! Kérem forduljon  arendszergazdához';
         break;
       case 400:
         console.log(err.status);
         this.messageToWebmaster = true;
-        this.messageError = "HIBA! Megengedett fájlformátumok: jpg, jpeg, png";
+        this.messageError = 'HIBA! Megengedett fájlformátumok: jpg, jpeg, png';
+        this.pictureURL.nativeElement.value = null;
         break;
       default:
         this.messageToWebmaster = true;
-        this.messageError = "Nem várt hiba";
+        this.messageError = 'Nem várt hiba';
         console.log(err);
     }
   }

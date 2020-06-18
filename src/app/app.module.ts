@@ -42,8 +42,8 @@ import {ContactService} from './shared/contact.service';
     PortfolioService,
     ContactService,
     LoggedInGuard,
-    {provide: 'API_URL', useValue: 'http://localhost/gtfoto_angular_php/'}
-    // {provide: 'API_URL', useValue: './'}
+    // {provide: 'API_URL', useValue: 'http://localhost/gtfoto_angular_php/'}
+    {provide: 'API_URL', useValue: './'}
   ],
   bootstrap: [AppComponent]
 })
