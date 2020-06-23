@@ -33,7 +33,8 @@ export class ContactFormComponent implements OnInit {
             ]
           )],
         subject: [null, Validators.required],
-        message: [null, Validators.required]
+        message: [null, Validators.required],
+        dataManagement: [null, Validators.requiredTrue]
       }
     );
   }
@@ -51,6 +52,7 @@ export class ContactFormComponent implements OnInit {
       this.form.get('email').disable();
       this.form.get('subject').disable();
       this.form.get('message').disable();
+      this.form.get('dataManagement').disable();
 
       this._contactService.sendMessage(
         form.value
@@ -101,7 +103,8 @@ export class ContactFormComponent implements OnInit {
         sender: null,
         email: null,
         subject: null,
-        message: null
+        message: null,
+        dataManagement: null
       });
 
       // notification user
@@ -114,6 +117,7 @@ export class ContactFormComponent implements OnInit {
       this.form.get('email').enable();
       this.form.get('subject').enable();
       this.form.get('message').enable();
+      this.form.get('dataManagement').enable();
     }, 5000);
   }
 }

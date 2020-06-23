@@ -21,3 +21,29 @@
   box-shadow: none;
   color: $white;
 }
+
+input[type="checkbox"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 2px solid $black;
+  background-color: $black;
+}
+
+input[type="checkbox"]:checked {
+  background-color: $yellow;
+}
+
+span.dataManagement, a, a:hover {
+  color: $white;
+  font-size: 20px;
+  font-style: italic;
+}
