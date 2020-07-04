@@ -24,9 +24,9 @@ export class PortfolioService {
     requestHeader.append('Access-Control-Allow-Headers', 'Content-Type');
 
     const headerDict = {
-      'Content-Type': 'application/json', // type of the sent data
-      Accept: 'application/json', // type of the expected data
-      'Access-Control-Allow-Headers': 'Content-Type' // the content-type header will be used on server side
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type'
     };
 
     const requestParams = new HttpParams()
