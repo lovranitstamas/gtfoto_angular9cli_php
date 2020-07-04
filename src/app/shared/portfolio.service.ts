@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {PortfolioPictureModel} from './portfolio-picture-model';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
@@ -18,7 +18,31 @@ export class PortfolioService {
   }
 
   getPictureList(subfolder): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php?subfolder=${subfolder}`);
+    const requestHeader = new HttpHeaders();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('Accept', 'application/json');
+    requestHeader.append('Access-Control-Allow-Headers', 'Content-Type');
+
+    const headerDict = {
+      'Content-Type': 'application/json', // type of the sent data
+      Accept: 'application/json', // type of the expected data
+      'Access-Control-Allow-Headers': 'Content-Type' // the content-type header will be used on server side
+    };
+
+    const requestParams = new HttpParams()
+      .set('subfolder', subfolder);
+
+    /*const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+      params: requestParams
+    };*/
+
+    // return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php?subfolder=${subfolder}`);
+    // return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php`, requestOptions);
+    return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php`, {
+      headers: requestHeader,
+      params: requestParams
+    });
   }
 
   getPortfolioById(pictureId, subfolder): Observable<any> {
