@@ -55,7 +55,7 @@
 
     <button class="btn btn-full-list-view bg-warning my-3"
             type="button"
-            *ngIf="limit < aModifiedResultObjects.length && aModifiedResultObjects.length != masonryImages.length"
+            *ngIf="limit < allPictures.length && allPictures.length != masonryImages.length"
             (click)="showMoreImages()"><span>Mutasd a többi képet</span>
     </button>
 
@@ -73,7 +73,7 @@
 <div class="row" *ngIf="serverError">
   <div class="col text-center">
     <h1 class="display-1 py-2 server-error">Oops!</h1>
-    <h1 class="p-2">{{serverErrorCode}}</h1>
+    <h1 class="p-2">{{serverErrorMessage}}</h1>
     <h2 class="p-2">Nem várt hiba! Kérem forduljon a rendszergazdához.</h2>
   </div>
 </div>

@@ -23,14 +23,12 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
   emptyList = false;
   loading = true;
   serverError = false;
-  serverErrorCode: number;
-
-  picture: PortfolioPictureModel;
+  serverErrorMessage: string | number;
   masonryImages: PortfolioPictureModel[];
-  aModifiedResultObjects: Array<PortfolioPictureModel> = [];
+  allPictures: Array<PortfolioPictureModel> = [];
 
   private filteredText$ = new BehaviorSubject<string>(null);
-  private _picturesSubscription: Subscription;
+  private _pictureSubscription: Subscription;
   private _isLoggedInSubscription: Subscription;
   private _adminStatusSubscription: Subscription;
 
@@ -51,88 +49,75 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     );
   }
 
-
   ngOnInit() {
-    this._picturesSubscription = this._portfolioService.getPictureList(this.node).pipe(
+    this._pictureSubscription = this._portfolioService.getPictureList(this.node).pipe(
       flatMap(
         response => {
-          if (response.status_code_header !== 200) {
-            console.log(response.status_code_header);
-            this.serverError = true;
-            this.serverErrorCode = response.status_code_header;
-            this._picturesSubscription.unsubscribe();
-            return null;
-          } else {
-            this.serverError = false;
-            const pictures = response.body['pictures'];
-            pictures.length === 0 ? this.emptyList = true : this.emptyList = false;
-            this.fullListLength = pictures.length;
+          this.serverError = false;
+          const pictures: any = response;
+          pictures.length === 0 ? this.emptyList = true : this.emptyList = false;
+          this.fullListLength = pictures.length;
 
-            return this.filteredText$.pipe(
-              map(
-                filterText => {
-                  if (filterText === null) {
-                    return pictures;
-                  } else {
-                    return pictures.filter(
-                      picture => {
-                        return picture.createDate.split('-', 3).indexOf(filterText.toLowerCase()) > -1;
-                      });
-                  }
+          return this.filteredText$.pipe(
+            map(
+              filterText => {
+                if (filterText === null) {
+                  return pictures;
+                } else {
+                  return pictures.filter(
+                    picture => {
+                      return picture.createDate.split('-', 3).indexOf(filterText.toLowerCase()) > -1;
+                    });
                 }
-              )
-            );
-          }
+              }
+            )
+          );
         }
       )
-    ).subscribe(
-      response => {
-        this.aModifiedResultObjects = [];
+    )
+      .subscribe(
+        (response: PortfolioPictureModel[]) => {
+          this.allPictures = [];
 
-        response.map((ev) => {
+          response.map((ev: any) => {
+            const picture = new PortfolioPictureModel();
 
-          this.picture = new PortfolioPictureModel();
+            picture.idFunction = ev.id;
+            picture.nodeIdFunction = ev.nodeId;
+            picture.subfolderFunction = ev.subfolder;
+            picture.categoryFunction = ev.category;
+            picture.titleFunction = ev.title;
+            picture.dateOfEventFunction = ev.createDate;
+            picture.fileURLFunction = ev.fileURL;
 
-          this.picture.idFunction = ev.id;
-          this.picture.nodeIdFunction = ev.nodeId;
-          this.picture.subfolderFunction = ev.subfolder;
-          this.picture.categoryFunction = ev.category;
-          this.picture.titleFunction = ev.title;
+            this.allPictures.push(picture);
+          });
 
-          if (ev.subfolder != 'child-and-family' &&
-            ev.subfolder != 'christening' &&
-            ev.subfolder != 'kindergarten' &&
-            ev.subfolder != 'portrait' &&
-            ev.subfolder != 'pregnant') {
-            this.picture.fileURLFunction = `${this.apiUrl}uploads/gallery/card-view/wedding/${this.picture.subfolderFunction}/${ev.filename}`;
+          if (this.fullListView) {
+            this.masonryImages = this.allPictures.slice(0, this.fullListLength);
           } else {
-            this.picture.fileURLFunction = `${this.apiUrl}uploads/gallery/card-view/${this.picture.subfolderFunction}/${ev.filename}`;
+            this.masonryImages = this.allPictures.slice(0, this.limit);
           }
 
-          this.picture.dateOfEventFunction = ev.createDate;
-
-          this.aModifiedResultObjects.push(this.picture);
-
-        });
-
-        if (this.fullListView) {
-          this.masonryImages = this.aModifiedResultObjects.slice(0, this.fullListLength);
-        } else {
-          this.masonryImages = this.aModifiedResultObjects.slice(0, this.limit);
+          this.loading = false;
+        },
+        (err) => {
+          this.serverError = true;
+          typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = err;
+          console.warn(err);
+          this._pictureSubscription.unsubscribe();
+          return null;
         }
-
-        this.loading = false;
-      }
-    );
+      );
   }
 
   ngOnDestroy(): void {
-    this._picturesSubscription.unsubscribe();
+    this._pictureSubscription.unsubscribe();
     this._isLoggedInSubscription.unsubscribe();
   }
 
   showMoreImages() {
-    this.masonryImages = this.aModifiedResultObjects.slice(0, this.fullListLength);
+    this.masonryImages = this.allPictures.slice(0, this.fullListLength);
     this.fullListView = true;
   }
 
