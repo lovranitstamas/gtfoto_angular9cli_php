@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {WeddingModule, weddingRoutes as weddingChildRoutes} from "./wedding/wedding.module";
-import {CoreModule} from "../core/core.module";
+import {WeddingModule, weddingRoutes as weddingChildRoutes} from './wedding/wedding.module';
+import {CoreModule} from '../core/core.module';
 import {FormsModule} from '@angular/forms';
 import {AlertModule} from 'ngx-bootstrap/alert';
 
@@ -15,7 +15,7 @@ import {ChristeningListComponent} from './main-menu/christening-list/christening
 import {KindergartenListComponent} from './main-menu/kindergarten-list/kindergarten-list.component';
 import {WeddingComponent} from './wedding/wedding.component';
 
-import {LoggedInGuard} from "../shared/logged-in.guard";
+import {LoggedInGuard} from '../shared/logged-in.guard';
 
 export const portfolioRoutes: Routes = [
   {
@@ -28,7 +28,7 @@ export const portfolioRoutes: Routes = [
       {path: 'kindergarten', component: KindergartenListComponent},
       {path: 'wedding', component: WeddingComponent, children: weddingChildRoutes},
       {path: 'new', component: PortfolioDetailComponent, canActivate: [LoggedInGuard]},
-      {path: 'edit/:node/:id', component: PortfolioDetailComponent},
+      {path: 'edit/:node/:id', component: PortfolioDetailComponent, canActivate: [LoggedInGuard]},
     ]
   }
 ];

@@ -54,8 +54,26 @@ export class PortfolioService {
       catchError(this.handleError2));
   }
 
-  getPortfolioById(pictureId, subfolder): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}api/getPictureDatas.php?id=${pictureId}&subfolder=${subfolder}`);
+  // if i use any i can use the properties without function
+  getPortfolioById(pictureId, subfolder): Observable<PortfolioPictureModel> {
+    const requestHeader = new HttpHeaders();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('Accept', 'application/json');
+    requestHeader.append('Access-Control-Allow-Headers', 'Content-Type');
+
+    const requestParams = new HttpParams()
+      .set('id', pictureId)
+      .set('subfolder', subfolder);
+
+    return this._httpClient.get<any>(`${this.apiUrl}api/getPictureDatas`, {
+      headers: requestHeader,
+      params: requestParams
+    }).pipe(
+      map((res) => {
+        return res;
+      }),
+      catchError(this.handleError2)
+    );
   }
 
   delete(picture: PortfolioPictureModel): Observable<any> {

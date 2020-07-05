@@ -89,7 +89,7 @@
         </div>
 
         <div class="text-center mb-3">
-          <ng-container *ngIf="userService.isLoggedIn$ | async">
+          <ng-container *ngIf="(userService.isLoggedIn$ | async) &&  !serverError">
             <ng-container *ngIf="viewForm; else editButtons">
               <button type="button"
                       class="btn btn-primary btn-lg mr-1"
@@ -120,8 +120,8 @@
         <div class="form-group font-weight-bold text-center mt-3">
           <alert dismissible="true"
                  type="danger"
-                 *ngIf="messageToWebmaster"
-          >{{messageError}}
+                 *ngIf="serverError"
+          >{{serverErrorMessage}}
           </alert>
         </div>
       </form>

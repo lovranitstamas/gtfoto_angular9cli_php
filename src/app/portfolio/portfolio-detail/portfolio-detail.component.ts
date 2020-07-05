@@ -16,11 +16,12 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   portfolioPicture: PortfolioPictureModel;
   viewForm = false;
   setNode = false;
-  messageToWebmaster: boolean;
-  messageError: string;
+  serverError = false;
+  serverErrorMessage: string | number;
   selectedFiles: FileList;
   file: boolean | File;
   nodes: Array<{ id: number, category: string }> = [];
+  @ViewChild('form') form;
   @ViewChild('pictureURL') pictureURL: any;
 
   // close all subscription
@@ -56,36 +57,26 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
     if (portfolioPictureId) {
       this._portfolioService.getPortfolioById(portfolioPictureId, node).pipe(
         takeUntil(this._destroy$))
-        .subscribe(evm => {
-          if (evm.status_code_header === 200) {
-            if (evm.body.picture.id === null) {
-              this._router.navigate(['/home']);
-            }
+        .subscribe((evm: any) => {
+            this.portfolioPicture.idFunction = evm.id;
+            this.portfolioPicture.nodeIdFunction = evm.nodeId;
+            this.portfolioPicture.subfolderFunction = evm.subfolder;
+            this.portfolioPicture.categoryFunction = evm.category;
+            this.portfolioPicture.titleFunction = evm.title;
+            this.portfolioPicture.fileURLFunction = evm.fileURL;
+            this.portfolioPicture.dateOfEventFunction = evm.createDate;
 
-            this.portfolioPicture.idFunction = evm.body.picture.id;
-            this.portfolioPicture.nodeIdFunction = evm.body.picture.nodeId;
-            this.portfolioPicture.subfolderFunction = evm.body.picture.subfolder;
-            this.portfolioPicture.categoryFunction = evm.body.picture.category;
-            this.portfolioPicture.titleFunction = evm.body.picture.title;
-
-            if (this.portfolioPicture.subfolderFunction !== 'child-and-family' &&
-              this.portfolioPicture.subfolderFunction !== 'christening' &&
-              this.portfolioPicture.subfolderFunction !== 'kindergarten' &&
-              this.portfolioPicture.subfolderFunction !== 'portrait' &&
-              this.portfolioPicture.subfolderFunction !== 'pregnant') {
-              this.portfolioPicture.fileURLFunction =
-                `${this.apiUrl}uploads/gallery/thumbnail/wedding/${node}/${evm.body.picture.filename}`;
-            } else {
-              this.portfolioPicture.fileURLFunction = `${this.apiUrl}uploads/gallery/thumbnail/${node}/${evm.body.picture.filename}`;
-            }
-
-            this.portfolioPicture.dateOfEventFunction = evm.body.picture.createDate;
             this.setNode = true;
-          } else {
-            console.log(evm.status_code_header);
-            this._router.navigate(['/home']);
-          }
-        });
+          },
+          (err) => {
+            this.serverError = true;
+            typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err;
+            this.setNode = true;
+            this.form.disabled = true;
+            console.warn(err);
+
+            return null;
+          });
     }
 
     this.nodes = [
@@ -128,7 +119,6 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
             this.navigateBack();
           },
           (err) => {
-            this.handleError(err);
           }
         );
     } else {
@@ -138,15 +128,14 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
         .subscribe(
           () => this.navigateBack(),
           (err) => {
-            this.handleError(err);
           }
         );
     }
   }
 
   delete() {
-    this.messageToWebmaster = false;
-    this.messageError = '';
+    // this.messageToWebmaster = false;
+    // this.messageError = '';
     this._portfolioService.delete(this.portfolioPicture).pipe(
       takeUntil(this._destroy$))
       .subscribe(
@@ -154,32 +143,11 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
           this.navigateBack();
         },
         (err) => {
-          this.handleError(err);
         }
       );
   }
 
   navigateBack() {
     this._location.back();
-  }
-
-  handleError(err) {
-    switch (err.status) {
-      case 422:
-        console.log(err.status);
-        this.messageToWebmaster = true;
-        this.messageError = 'Feldolgozhatatlan kérés! Kérem forduljon  arendszergazdához';
-        break;
-      case 400:
-        console.log(err.status);
-        this.messageToWebmaster = true;
-        this.messageError = 'HIBA! Megengedett fájlformátumok: jpg, jpeg, png';
-        this.pictureURL.nativeElement.value = null;
-        break;
-      default:
-        this.messageToWebmaster = true;
-        this.messageError = 'Nem várt hiba';
-        console.log(err);
-    }
   }
 }
