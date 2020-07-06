@@ -21,14 +21,14 @@ export class UserService {
 
   login(loginObj): Observable<any> {
     return this._httpClient.post<any>(
-      `${this.apiUrl}api/loginUser.php`, JSON.stringify(loginObj),
+      `${this.apiUrl}loginUser.php`, JSON.stringify(loginObj),
       {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       });
   }
 
   detectTimeoutSession(): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}api/detectTimeoutSession.php`);
+    return this._httpClient.get<any>(`${this.apiUrl}detectTimeoutSession.php`);
   }
 
   setUserToActive(remoteUser) {
@@ -53,6 +53,6 @@ export class UserService {
   }
 
   logout(): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}api/logout.php`);
+    return this._httpClient.get<any>(`${this.apiUrl}logout.php`);
   }
 }

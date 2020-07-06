@@ -103,7 +103,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
         },
         (err) => {
           this.serverError = true;
-          typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = err;
+          (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = err.status;
           console.warn(err);
           this._pictureSubscription.unsubscribe();
           return null;

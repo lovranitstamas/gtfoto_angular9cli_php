@@ -69,8 +69,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
             this.setNode = true;
           },
           (err) => {
-            this.serverError = true;
-            typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err;
+            this.setError(err);
             this.setNode = true;
             this.form.disabled = true;
             console.warn(err);
@@ -119,6 +118,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
             this.navigateBack();
           },
           (err) => {
+            this.setError(err);
           }
         );
     } else {
@@ -128,6 +128,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
         .subscribe(
           () => this.navigateBack(),
           (err) => {
+            this.setError(err);
           }
         );
     }
@@ -141,8 +142,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
           this.navigateBack();
         },
         (err) => {
-          this.serverError = true;
-          typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err;
+          this.setError(err);
           this.viewForm = true;
           console.warn(err);
         }
@@ -151,5 +151,10 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
 
   navigateBack() {
     this._location.back();
+  }
+
+  setError(err) {
+    this.serverError = true;
+    (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err.status;
   }
 }

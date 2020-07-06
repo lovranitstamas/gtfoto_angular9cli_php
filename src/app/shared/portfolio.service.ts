@@ -17,11 +17,6 @@ export class PortfolioService {
     return throwError(error);
   }
 
-  handleError2(error: HttpErrorResponse) {
-    const parseError = error.status !== 0 ? error.status : error;
-    return throwError(parseError);
-  }
-
   getPictureList(subfolder): Observable<PortfolioPictureModel[]> {
     const requestHeader = new HttpHeaders();
     requestHeader.append('Content-Type', 'application/json');
@@ -41,9 +36,9 @@ export class PortfolioService {
       headers: new HttpHeaders(headerDict),
       params: requestParams
     };*/
-    // return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php?subfolder=${subfolder}`);
-    // return this._httpClient.get<any>(`${this.apiUrl}api/getPictureList.php`, requestOptions);
-    return this._httpClient.get(`${this.apiUrl}api/getPictureList`, {
+    // return this._httpClient.get<any>(`${this.apiUrl}getPictureList.php?subfolder=${subfolder}`);
+    // return this._httpClient.get<any>(`${this.apiUrl}getPictureList.php`, requestOptions);
+    return this._httpClient.get(`${this.apiUrl}getPictureList`, {
       headers: requestHeader,
       params: requestParams
     }).pipe(
@@ -51,7 +46,7 @@ export class PortfolioService {
         this.photos = res['data'];
         return this.photos;
       }),
-      catchError(this.handleError2));
+      catchError(this.handleError));
   }
 
   // if i use any i can use the properties without function
@@ -65,14 +60,14 @@ export class PortfolioService {
       .set('id', pictureId)
       .set('subfolder', subfolder);
 
-    return this._httpClient.get<any>(`${this.apiUrl}api/getPictureDatas`, {
+    return this._httpClient.get<any>(`${this.apiUrl}getPictureDatas`, {
       headers: requestHeader,
       params: requestParams
     }).pipe(
       map((res) => {
         return res;
       }),
-      catchError(this.handleError2)
+      catchError(this.handleError)
     );
   }
 
@@ -80,19 +75,19 @@ export class PortfolioService {
     const id = picture.idFunction;
     const paramsPicture = new HttpParams()
       .set('id', id.toString());
-    return this._httpClient.delete(`${this.apiUrl}api/deletePicture`, {params: paramsPicture}).pipe(
+    return this._httpClient.delete(`${this.apiUrl}deletePicture`, {params: paramsPicture}).pipe(
       map(() => {
         const filteredPhotos = this.photos.filter((photo) => {
           return +photo['id'] !== +id;
         });
         return this.photos = filteredPhotos;
       }),
-      catchError(this.handleError2)
+      catchError(this.handleError)
     );
   }
 
   update(picture: PortfolioPictureModel): Observable<any> {
-    return this._httpClient.put(`${this.apiUrl}api/updatePicture.php`, {data: picture}).pipe(
+    return this._httpClient.put(`${this.apiUrl}updatePicture.php`, {data: picture}).pipe(
       catchError(this.handleError)
     );
   }
@@ -103,7 +98,7 @@ export class PortfolioService {
     formData.append('nodeId', picture.nodeIdFunction);
     formData.append('pictureURL', data, data.name);
     formData.append('createDate', picture.dateOfEventFunction);
-    const uploadURL = `${this.apiUrl}api/uploadPicture.php`;
+    const uploadURL = `${this.apiUrl}uploadPicture.php`;
     return this._httpClient.post<any>(uploadURL, formData).pipe(
       catchError(this.handleError)
     );

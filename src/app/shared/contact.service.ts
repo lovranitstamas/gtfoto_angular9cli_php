@@ -21,7 +21,7 @@ export class ContactService {
         {id: fbId}
       )));*/
 
-    return this._httpClient.post<any>(`${this.apiUrl}api/saveMessage.php`, JSON.stringify(message),
+    return this._httpClient.post<any>(`${this.apiUrl}saveMessage.php`, JSON.stringify(message),
       {
         headers: new HttpHeaders({'Content-Type': 'application/json'})
       });
