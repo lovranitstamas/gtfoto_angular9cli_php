@@ -76,12 +76,18 @@ export class PortfolioService {
     );
   }
 
-  delete(picture: PortfolioPictureModel): Observable<any> {
+  delete(picture: PortfolioPictureModel): Observable<PortfolioPictureModel[]> {
     const id = picture.idFunction;
     const paramsPicture = new HttpParams()
       .set('id', id.toString());
-    return this._httpClient.delete(`${this.apiUrl}api/deletePicture.php`, {params: paramsPicture}).pipe(
-      catchError(this.handleError)
+    return this._httpClient.delete(`${this.apiUrl}api/deletePicture`, {params: paramsPicture}).pipe(
+      map(() => {
+        const filteredPhotos = this.photos.filter((photo) => {
+          return +photo['id'] !== +id;
+        });
+        return this.photos = filteredPhotos;
+      }),
+      catchError(this.handleError2)
     );
   }
 

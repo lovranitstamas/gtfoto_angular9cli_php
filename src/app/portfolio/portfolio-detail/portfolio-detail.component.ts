@@ -134,8 +134,6 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   }
 
   delete() {
-    // this.messageToWebmaster = false;
-    // this.messageError = '';
     this._portfolioService.delete(this.portfolioPicture).pipe(
       takeUntil(this._destroy$))
       .subscribe(
@@ -143,6 +141,10 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
           this.navigateBack();
         },
         (err) => {
+          this.serverError = true;
+          typeof err !== 'number' ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err;
+          this.viewForm = true;
+          console.warn(err);
         }
       );
   }
