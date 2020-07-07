@@ -60,7 +60,7 @@ export class PortfolioService {
       .set('id', pictureId)
       .set('subfolder', subfolder);
 
-    return this._httpClient.get<any>(`${this.apiUrl}getPictureDatas`, {
+    return this._httpClient.get<PortfolioPictureModel>(`${this.apiUrl}getPictureDatas`, {
       headers: requestHeader,
       params: requestParams
     }).pipe(

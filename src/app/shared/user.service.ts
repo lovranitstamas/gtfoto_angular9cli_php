@@ -1,8 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserModel} from './user-model';
-import {Observable, ReplaySubject} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, ReplaySubject, throwError} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,16 +20,25 @@ export class UserService {
     this.isLoggedIn$.next(false);
   }
 
-  login(loginObj): Observable<any> {
-    return this._httpClient.post<any>(
-      `${this.apiUrl}loginUser.php`, JSON.stringify(loginObj),
-      {
-        headers: new HttpHeaders({'Content-Type': 'application/json'})
-      });
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
   }
 
-  detectTimeoutSession(): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}detectTimeoutSession.php`);
+  login(loginObj): Observable<UserModel> {
+    return this._httpClient.post(
+      `${this.apiUrl}loginUser`, {data: loginObj})
+      .pipe(map((res) => {
+          return res['data'];
+        }),
+        catchError(this.handleError));
+  }
+
+  detectTimeoutSession(): Observable<UserModel> {
+    return this._httpClient.get(`${this.apiUrl}detectTimeoutSession.php`)
+      .pipe(map((res) => {
+          return res['data'];
+        }),
+        catchError(this.handleError));
   }
 
   setUserToActive(remoteUser) {
@@ -52,7 +62,9 @@ export class UserService {
     return this._user.asObservable();
   }
 
-  logout(): Observable<any> {
-    return this._httpClient.get<any>(`${this.apiUrl}logout.php`);
+  logout() {
+    return this._httpClient.get<any>(`${this.apiUrl}logout`).pipe(
+      catchError(this.handleError)
+    );
   }
 }

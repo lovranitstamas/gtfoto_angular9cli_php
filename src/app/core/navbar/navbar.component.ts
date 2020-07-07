@@ -3,7 +3,7 @@ import {UserService} from '../../shared/user.service';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {UserModel} from "../../shared/user-model";
+import {UserModel} from '../../shared/user-model';
 
 @Component({
   selector: 'app-navbar',
@@ -81,22 +81,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   clickOnRouterLink() {
     this.userService.detectTimeoutSession().subscribe(
-      (response) => {
-        if (response.status_code_header === 200) {
-          this.remoteUser = new UserModel();
-          this.remoteUser.idFunction = response.body['user'].id;
-          this.remoteUser.nameFunction = response.body['user'].name;
-          this.remoteUser.emailFunction = response.body['user'].email;
-          this.remoteUser.addressFunction = response.body['user'].address;
-          this.remoteUser.dateOfBirthFunction = response.body['user'].dateOfBirth;
-          this.remoteUser.genderFunction = response.body['user'].gender;
-          this.remoteUser.profilePictureUrlFunction = response.body['user'].profilePictureUrl;
-          this.remoteUser.adminFunction = response.body['user'].admin;
+      (response: any) => {
+        this.remoteUser = new UserModel();
 
-          this.userService.setUserToActive(this.remoteUser);
-        } else {
-          this.userService.setUserToInactive();
-        }
+        this.remoteUser = new UserModel();
+        this.remoteUser.idFunction = response.id;
+        this.remoteUser.nameFunction = response.name;
+        this.remoteUser.emailFunction = response.email;
+        this.remoteUser.addressFunction = response.address;
+        this.remoteUser.dateOfBirthFunction = response.dateOfBirth;
+        this.remoteUser.genderFunction = response.gender;
+        this.remoteUser.profilePictureUrlFunction = response.profilePictureUrl;
+        this.remoteUser.adminFunction = response.admin;
+
+        this.userService.setUserToActive(this.remoteUser);
+      }, () => {
+        this.userService.setUserToInactive();
       });
 
     this.isCollapsed = true;
@@ -113,11 +113,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.userService.logout().subscribe(
-      (response) => {
-        if (response.status_code_header === 200) {
-          this.userService.setUserToInactive();
-          this._router.navigate(['/home']);
-        }
+      () => {
+        this.userService.setUserToInactive();
+        this._router.navigate(['/home']);
+      }, (err) => {
+        console.warn(err);
       });
   }
 

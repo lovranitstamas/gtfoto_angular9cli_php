@@ -17,7 +17,7 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   viewForm = false;
   setNode = false;
   serverError = false;
-  serverErrorMessage: string | number;
+  serverErrorMessage: string;
   selectedFiles: FileList;
   file: boolean | File;
   nodes: Array<{ id: number, category: string }> = [];

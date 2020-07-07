@@ -12,7 +12,7 @@
             <div class="form-group font-weight-bold text-center">
               <alert dismissible="true"
                      type="danger" *ngIf="(loginForm.get('loginEmail').hasError('required') ||
-                      loginPassword.hasError('required')) && onProcess"
+                      loginForm.get('loginPassword').hasError('required')) && onProcess"
                      (onClose)="closeAlert()">Hiányos adatbevitel</alert>
               <alert dismissible="true"
                      type="danger" *ngIf="loginForm.get('loginEmail').hasError('invalidEmail') &&
@@ -35,18 +35,18 @@
                      id="loginPassword"
                      type="password"
                      placeholder="Jelszó"
-                     [formControl]="loginPassword">
+                     formControlName="loginPassword">
             </div>
 
             <div class="form-group font-weight-bold text-center">
-              <alert dismissible="true"
+              <!--<alert dismissible="true"
                      type="danger" *ngIf="loginAuthInfo"
-                     (onClose)="closeAlert()">E-mail cím és/vagy jelszó nem megfelelő</alert>
+                     (onClose)="closeAlert()">E-mail cím és/vagy jelszó nem megfelelő</alert>-->
             </div>
             <div class="form-group font-weight-bold text-center">
               <alert dismissible="true"
-                     type="danger" *ngIf="messageToWebmaster"
-                     (onClose)="closeAlert()">Nem várt hiba! Kérem keresse a rendszergazdát</alert>
+                     type="danger" *ngIf="serverError"
+                     (onClose)="closeAlert()">{{serverErrorMessage}}</alert>
             </div>
 
             <button class="btn btn-login btn-lg btn-block bg-warning mt-3"

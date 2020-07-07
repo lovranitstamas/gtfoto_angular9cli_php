@@ -16,23 +16,22 @@ export class AppComponent {
               private _router: Router,
   ) {
     this._userService.detectTimeoutSession().subscribe(
-      (response) => {
-        if (response.status_code_header === 200) {
-          this.remoteUser = new UserModel();
-          this.remoteUser.idFunction = response.body.user.id;
-          this.remoteUser.nameFunction = response.body.user.name;
-          this.remoteUser.emailFunction = response.body.user.email;
-          this.remoteUser.addressFunction = response.body.user.address;
-          this.remoteUser.dateOfBirthFunction = response.body.user.dateOfBirth;
-          this.remoteUser.genderFunction = response.body.user.gender;
-          this.remoteUser.profilePictureUrlFunction = response.body.user.profilePictureUrl;
-          this.remoteUser.adminFunction = response.body.user.admin;
+      (response: any) => {
 
-          this._userService.setUserToActive(this.remoteUser);
-          // this._router.navigate(['/user']);
-        } else {
-          this._userService.setUserToInactive();
-        }
+        this.remoteUser = new UserModel();
+        this.remoteUser.idFunction = response.id;
+        this.remoteUser.nameFunction = response.name;
+        this.remoteUser.emailFunction = response.email;
+        this.remoteUser.addressFunction = response.address;
+        this.remoteUser.dateOfBirthFunction = response.dateOfBirth;
+        this.remoteUser.genderFunction = response.gender;
+        this.remoteUser.profilePictureUrlFunction = response.profilePictureUrl;
+        this.remoteUser.adminFunction = response.admin;
+
+        this._userService.setUserToActive(this.remoteUser);
+        // this._router.navigate(['/user']);
+      }, () => {
+        this._userService.setUserToInactive();
       });
   }
 }

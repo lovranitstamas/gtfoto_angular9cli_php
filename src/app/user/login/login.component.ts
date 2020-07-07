@@ -26,11 +26,10 @@ function emailValidator(control: FormControl): { [s: string]: boolean } {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginAuthInfo: boolean;
-  messageToWebmaster: boolean;
+  serverError = false;
+  serverErrorMessage: string;
   onProcess = false;
   loginForm: FormGroup;
-  loginPassword: any;
   private remoteUser: UserModel;
 
   @HostListener('input')
@@ -45,49 +44,49 @@ export class LoginComponent {
       loginEmail: ['', Validators.compose([Validators.required, emailValidator])],
       loginPassword: ['', Validators.required]
     });
-
-    this.loginPassword = this.loginForm.controls['loginPassword'];
   }
 
   login(form) {
     this.onProcess = true;
-    this.loginAuthInfo = false;
-    this.messageToWebmaster = false;
 
     if (form.valid) {
       this._userService.login(form.value).subscribe(
-        (response) => {
-          if (response.status_code_header === 200) {
-            this.remoteUser = new UserModel();
+        (response: any) => {
+          this.remoteUser = new UserModel();
 
-            this.remoteUser.idFunction = response.body['user'].id;
-            this.remoteUser.nameFunction = response.body['user'].name;
-            this.remoteUser.emailFunction = response.body['user'].email;
-            this.remoteUser.addressFunction = response.body['user'].address;
-            this.remoteUser.dateOfBirthFunction = response.body['user'].dateOfBirth;
-            this.remoteUser.genderFunction = response.body['user'].gender;
-            this.remoteUser.profilePictureUrlFunction = response.body['user'].profilePictureUrl;
-            this.remoteUser.adminFunction = response.body['user'].admin;
+          this.remoteUser.idFunction = response.id;
+          this.remoteUser.nameFunction = response.name;
+          this.remoteUser.emailFunction = response.email;
+          this.remoteUser.addressFunction = response.address;
+          this.remoteUser.dateOfBirthFunction = response.dateOfBirth;
+          this.remoteUser.genderFunction = response.gender;
+          this.remoteUser.profilePictureUrlFunction = response.profilePictureUrl;
+          this.remoteUser.adminFunction = response.admin;
 
-            this._userService.setUserToActive(this.remoteUser);
-            this._router.navigate(['/user']);
-          } else {
-            switch (response.status_code_header) {
-              case 404:
-                this.messageToWebmaster = true;
-                break;
-              default:
-                this.loginAuthInfo = true;
-            }
-            console.log(response.status_code_header);
-          }
+          this._userService.setUserToActive(this.remoteUser);
+          this._router.navigate(['/user']);
+        }, (err) => {
+          this.setError(err);
         });
     }
   }
 
   closeAlert() {
     this.onProcess = false;
-    this.loginAuthInfo = false;
-    this.messageToWebmaster = false;
+    this.serverError = false;
+  }
+
+  setError(err) {
+    this.serverError = true;
+    switch (err.status) {
+      case 400:
+        this.serverErrorMessage = 'E-mail formátum nem megfelőle';
+        break;
+      case 422:
+        this.serverErrorMessage = 'E-mail cím/jelszó páros nem megfelelő';
+        break;
+      default:
+        this.serverErrorMessage = err.status;
+    }
   }
 }
