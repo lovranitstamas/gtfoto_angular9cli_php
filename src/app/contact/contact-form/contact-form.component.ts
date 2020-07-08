@@ -44,7 +44,6 @@ export class ContactFormComponent implements OnInit {
     this.submitSuccessAlert = false;
     this.submitErrorAlert = false;
 
-
     if (this.form.valid) {
       this.inactiveStateOfSendButton = true;
 
@@ -57,46 +56,20 @@ export class ContactFormComponent implements OnInit {
       this._contactService.sendMessage(
         form.value
       ).subscribe(
-        (response) => {
-          switch (response.status_code_header) {
-            case 404:
-              // HTTP/1.1 404 Not Found
-              console.log(response.status_code_header);
-              this.submitErrorAlert = true;
-              this.enableMessageForm();
-              break;
-
-            case 422:
-              // HTTP/1.1 422 Unprocessable Entity
-              console.log(response.status_code_header);
-              this.submitErrorAlert = true;
-              this.enableMessageForm();
-              break;
-
-            case 200:
-
-              // console.log(response.body['message']);
-              console.log(response.status_code_header);
+        () => {
               this.submitted = false;
               this.submitSuccessAlert = true;
               this.enableMessageForm();
-              break;
-
-          }
         },
         err => {
-          console.error(err);
-          // notification user
+          console.warn(err);
           this.submitErrorAlert = true;
-
-
         }
       );
     }
   }
 
   enableMessageForm() {
-
     setTimeout(() => {
       this.submitted = false;
       this.form.reset({

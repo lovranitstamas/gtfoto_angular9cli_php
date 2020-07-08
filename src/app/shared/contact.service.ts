@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,10 @@ import {Observable} from 'rxjs';
 export class ContactService {
 
   constructor(private _httpClient: HttpClient, @Inject('API_URL') private apiUrl: string) {
+  }
+
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
   }
 
   sendMessage(message): Observable<any> {
@@ -21,10 +26,8 @@ export class ContactService {
         {id: fbId}
       )));*/
 
-    return this._httpClient.post<any>(`${this.apiUrl}saveMessage.php`, JSON.stringify(message),
-      {
-        headers: new HttpHeaders({'Content-Type': 'application/json'})
-      });
+    return this._httpClient.post(`${this.apiUrl}saveMessage`, {data: message})
+      .pipe(catchError(this.handleError));
 
   }
 }
