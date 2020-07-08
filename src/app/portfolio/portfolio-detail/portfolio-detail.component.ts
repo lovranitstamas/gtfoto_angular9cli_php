@@ -119,20 +119,20 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
           },
           (err) => {
             this.setError(err);
-            this.serverErrorMessage += ' [Hibás adatbevitel. Kérem várjon]';
-            setTimeout(() => {
-              this.turnOffServerError();
-            }, 5000);
+            this.reInitEditMode();
           }
         );
     } else {
-      this.selectedFiles = undefined;
       this._portfolioService.create(this.portfolioPicture, this.file).pipe(
         takeUntil(this._destroy$))
         .subscribe(
-          () => this.navigateBack(),
+          () => {
+            this.selectedFiles = undefined;
+            this.navigateBack();
+          },
           (err) => {
             this.setError(err);
+            this.reInitEditMode();
           }
         );
     }
@@ -162,7 +162,11 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
     (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err.status;
   }
 
-  private turnOffServerError() {
-    this.serverError = false;
+  private reInitEditMode() {
+    this.serverErrorMessage += ' [Nem megfelelő adatbevitel. Kérem várjon]';
+    setTimeout(() => {
+      this.serverError = false;
+    }, 5000);
   }
+
 }

@@ -87,7 +87,7 @@ export class PortfolioService {
   }
 
   update(picture: PortfolioPictureModel): Observable<PortfolioPictureModel[]> {
-    return this._httpClient.put(`${this.apiUrl}updatePicture`, {data: picture}).pipe(map((res) => {
+    return this._httpClient.put(`${this.apiUrl}updatePicture`, {data: picture}).pipe(map(() => {
         const thePicure = this.photos.find((item) => {
           return +item['id'] === +picture.idFunction;
         });
@@ -108,10 +108,14 @@ export class PortfolioService {
     const formData = new FormData();
     formData.append('title', picture.titleFunction);
     formData.append('nodeId', picture.nodeIdFunction);
-    formData.append('pictureURL', data, data.name);
+    formData.append('picture', data, data.name);
     formData.append('createDate', picture.dateOfEventFunction);
-    const uploadURL = `${this.apiUrl}uploadPicture.php`;
-    return this._httpClient.post<any>(uploadURL, formData).pipe(
+    const uploadURL = `${this.apiUrl}uploadPicture`;
+    return this._httpClient.post(uploadURL, formData).pipe(map((res) => {
+        this.photos.push(res['data']);
+        console.log(this.photos);
+        return this.photos;
+      }),
       catchError(this.handleError)
     );
   }
