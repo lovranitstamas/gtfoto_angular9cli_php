@@ -81,20 +81,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   clickOnRouterLink() {
     this.userService.detectTimeoutSession().subscribe(
-      (response: any) => {
-        this.remoteUser = new UserModel();
-
-        this.remoteUser = new UserModel();
-        this.remoteUser.idFunction = response.id;
-        this.remoteUser.nameFunction = response.name;
-        this.remoteUser.emailFunction = response.email;
-        this.remoteUser.addressFunction = response.address;
-        this.remoteUser.dateOfBirthFunction = response.dateOfBirth;
-        this.remoteUser.genderFunction = response.gender;
-        this.remoteUser.profilePictureUrlFunction = response.profilePictureUrl;
-        this.remoteUser.adminFunction = response.admin;
-
-        this.userService.setUserToActive(this.remoteUser);
+      () => {
       }, () => {
         this.userService.setUserToInactive();
       });

@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'gtfotoangularphp9';
+  title = 'Gt fotó';
   private remoteUser: UserModel;
 
   constructor(private _userService: UserService,
