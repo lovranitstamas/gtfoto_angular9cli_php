@@ -24,15 +24,16 @@ export class ContactFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group(
       {
-        sender: [null, Validators.required],
+        sender: [null, Validators.compose([Validators.required, Validators.maxLength(50)])],
         email: [null,
           Validators.compose(
             [
               Validators.required,
-              emailFormatValidator()
+              emailFormatValidator(),
+              Validators.maxLength(40)
             ]
           )],
-        subject: [null, Validators.required],
+        subject: [null, Validators.compose([Validators.required, Validators.maxLength(30)])],
         message: [null, Validators.required],
         dataManagement: [null, Validators.requiredTrue]
       }
