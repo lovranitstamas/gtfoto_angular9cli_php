@@ -119,6 +119,10 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
           },
           (err) => {
             this.setError(err);
+            this.serverErrorMessage += ' [Hibás adatbevitel. Kérem várjon]';
+            setTimeout(() => {
+              this.turnOffServerError();
+            }, 5000);
           }
         );
     } else {
@@ -156,5 +160,9 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
   setError(err) {
     this.serverError = true;
     (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err.status;
+  }
+
+  private turnOffServerError() {
+    this.serverError = false;
   }
 }

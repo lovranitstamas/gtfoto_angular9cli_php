@@ -17,12 +17,16 @@ export class PortfolioService {
     return throwError(error);
   }
 
-  getPictureList(subfolder): Observable<PortfolioPictureModel[]> {
+  setHeader() {
     const requestHeader = new HttpHeaders();
     requestHeader.append('Content-Type', 'application/json');
     requestHeader.append('Accept', 'application/json');
     requestHeader.append('Access-Control-Allow-Headers', 'Content-Type');
 
+    return requestHeader;
+  }
+
+  getPictureList(subfolder): Observable<PortfolioPictureModel[]> {
     const headerDict = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -39,7 +43,7 @@ export class PortfolioService {
     // return this._httpClient.get<any>(`${this.apiUrl}getPictureList.php?subfolder=${subfolder}`);
     // return this._httpClient.get<any>(`${this.apiUrl}getPictureList.php`, requestOptions);
     return this._httpClient.get(`${this.apiUrl}getPictureList`, {
-      headers: requestHeader,
+      headers: this.setHeader(),
       params: requestParams
     }).pipe(
       map((res) => {
@@ -51,17 +55,13 @@ export class PortfolioService {
 
   // if i use any i can use the properties without function
   getPortfolioById(pictureId, subfolder): Observable<PortfolioPictureModel> {
-    const requestHeader = new HttpHeaders();
-    requestHeader.append('Content-Type', 'application/json');
-    requestHeader.append('Accept', 'application/json');
-    requestHeader.append('Access-Control-Allow-Headers', 'Content-Type');
 
     const requestParams = new HttpParams()
       .set('id', pictureId)
       .set('subfolder', subfolder);
 
     return this._httpClient.get<PortfolioPictureModel>(`${this.apiUrl}getPictureDatas`, {
-      headers: requestHeader,
+      headers: this.setHeader(),
       params: requestParams
     }).pipe(
       map((res) => {
@@ -86,10 +86,22 @@ export class PortfolioService {
     );
   }
 
-  update(picture: PortfolioPictureModel): Observable<any> {
-    return this._httpClient.put(`${this.apiUrl}updatePicture.php`, {data: picture}).pipe(
-      catchError(this.handleError)
-    );
+  update(picture: PortfolioPictureModel): Observable<PortfolioPictureModel[]> {
+    return this._httpClient.put(`${this.apiUrl}updatePicture`, {data: picture}).pipe(map((res) => {
+        const thePicure = this.photos.find((item) => {
+          return +item['id'] === +picture.idFunction;
+        });
+        if (thePicure) {
+          thePicure['nodeId'] = picture.nodeIdFunction;
+          thePicure['subfolder'] = picture.subfolderFunction;
+          thePicure['category'] = picture.categoryFunction;
+          thePicure['title'] = picture.titleFunction;
+          thePicure['fileURL'] = picture.fileURLFunction;
+          thePicure['createDate'] = picture.dateOfEventFunction;
+        }
+        return this.photos;
+      }),
+      catchError(this.handleError));
   }
 
   create(picture: PortfolioPictureModel, data: File) {
