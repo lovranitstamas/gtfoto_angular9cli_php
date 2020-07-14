@@ -90,15 +90,13 @@ section.portfolio {
 
     .card-header {
       height: 100px;
-
-      img {
-        border-radius: 50%;
-      }
     }
 
     .card-body {
       h1 {
         font-size: 24px;
+        text-shadow: #0d111e 0 0 2px, #0d111e 0 0 2px, #000 0 0 2px,
+        #000 0 0 2px, #0d111e 0 0 2px, #0d111e 0 0 2px;
       }
 
       hr {
