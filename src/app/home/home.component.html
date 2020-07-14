@@ -1,20 +1,20 @@
 <carousel>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel1.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h1>A legszebb pillanatokat</h1>
+      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel2.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h1>A legszebb pillanatokat</h1>
+      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel3.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h1>A legszebb pillanatokat</h1>
+      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
     </div>
   </slide>
 </carousel>
@@ -42,17 +42,13 @@
       </div>
     </div>
     <div class="col-12 col-md-7 my-auto">
-      <h3 class="mb-3 mt-4 mt-md-0">Ti mikorra tervezitek a nagy napot?</h3>
+      <h1 class="mb-3 mt-4 mt-md-0">Üdvözöllek a weboldalon</h1>
       <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam alias
-        modi repellendus eos accusantium officiis dicta quam minus qui
-        dignissimos.
+        Ha fotóst keresel, ha szeretnél magadról vagy családodról fotókat készíttetni, akkor jó
+        helyen jársz.
       </p>
       <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
-        officiis, est quam ducimus possimus animi autem. Ullam ducimus, veniam
-        aut et, quisquam fugit animi ea repellendus voluptatum totam sequi quod
-        excepturi. Aperiam nostrum officiis soluta!
+        Bármilyen felmerülő kérdés vagy kérés lenne, keress bizalommal!
       </p>
     </div>
   </div>
@@ -66,21 +62,18 @@
           <div class="card-header text-center">
             <img
               alt="Card image cap"
-              class="card-img-top w-25 mt-3"
-              src="assets/engagement.png"
+              src="assets/portrait-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">JEGYESFOTÓ</h2>
+            <h1 class="card-title text-center">PORTRÉ FOTÓK</h1>
             <hr/>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+
             </p>
           </div>
           <div class="card-footer text-center">
-            <button class="btn btn-outline-warning" type="button">
+            <button class="btn btn-outline-warning" type="button" [routerLink]="'../portfolio/portrait'">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
@@ -92,12 +85,11 @@
           <div class="card-header text-center">
             <img
               alt="Card image cap"
-              class="card-img-top w-25"
-              src="assets/wedding.png"
+              src="assets/child-and-family-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">ESKÜVŐ</h2>
+            <h1 class="card-title text-center">CSALÁDI FOTÓK</h1>
             <hr/>
             <p class="card-text">
               This card has supporting text below as a natural lead-in to
@@ -105,7 +97,7 @@
             </p>
           </div>
           <div class="card-footer text-center">
-            <button class="btn btn-outline-warning" type="button">
+            <button class="btn btn-outline-warning" type="button" [routerLink]="'../portfolio/child-and-family'">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
@@ -117,12 +109,12 @@
           <div class="card-header text-center">
             <img
               alt="Card image cap"
-              class="card-img-top w-25 mt-3"
               src="assets/photography.png"
+              width="80"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">WERK</h2>
+            <h1 class="card-title text-center">FELSZERELÉSEK</h1>
             <hr/>
             <p class="card-text">
               This is a wider card with supporting text below as a natural
@@ -130,12 +122,12 @@
               than the first to show that equal height action.
             </p>
           </div>
-          <div class="card-footer text-center">
+          <!--<div class="card-footer text-center">
             <button class="btn btn-outline-warning" type="button">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

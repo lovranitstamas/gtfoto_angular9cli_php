@@ -9,6 +9,7 @@ import {ProfileComponent} from './user/profile/profile.component';
 // import {ProfileEditComponent} from './user/profile-edit/profile-edit.component';
 import {LoginComponent} from './user/login/login.component';
 import {LoggedInGuard} from './shared/logged-in.guard';
+import {ImpressComponent} from './impress/impress.component';
 
 import {portfolioRoutes} from './portfolio/portfolio.module';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'myservice', component: MyserviceComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'impress', component: ImpressComponent},
   {
     path: 'user',
     children: [

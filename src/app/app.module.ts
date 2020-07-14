@@ -18,12 +18,14 @@ import {LoggedInGuard} from './shared/logged-in.guard';
 import {UserService} from './shared/user.service';
 import {PortfolioService} from './shared/portfolio.service';
 import {ContactService} from './shared/contact.service';
+import {ImpressComponent} from './impress/impress.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ...AppRoutingModule.routableComponents,
     ContactFormComponent,
+    ImpressComponent,
   ],
   imports: [
     BrowserModule,
