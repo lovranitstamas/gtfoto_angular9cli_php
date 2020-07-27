@@ -1,5 +1,13 @@
 @import "../../sass/variables";
 
+.what-is-the-offer {
+  font-size: 1.6rem;
+}
+
+.offer {
+  font-size: 1.4rem;
+}
+
 hr.hr-style {
   height: 30px;
   border-style: solid;
@@ -8,7 +16,7 @@ hr.hr-style {
   border-radius: 20px;
 }
 
-.event-portfolio{
+.event-portfolio {
   background-color: rgba(255, 255, 255, 0.7);
   color: $menu-background;
 }
