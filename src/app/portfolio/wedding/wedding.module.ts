@@ -10,6 +10,7 @@ import {LiturgyListComponent} from './liturgy-list/liturgy-list.component';
 import {PreparationListComponent} from './preparation-list/preparation-list.component';
 import {PermissionListComponent} from './permission-list/permission-list.component';
 import {CivilCeremonyListComponent} from './civil-ceremony-list/civil-ceremony-list.component';
+import {SnapshotsListComponent} from './snapshots-list/snapshots-list.component';
 import {DinnerPartyListComponent} from './dinner-party-list/dinner-party-list.component';
 import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 
@@ -18,7 +19,6 @@ import {PortfolioUploadLinkComponent} from '../portfolio-upload-link/portfolio-u
 import {PortfolioHeaderComponent} from '../portfolio-header/portfolio-header.component';
 import {PortfolioListComponent} from '../portfolio-list/portfolio-list.component';
 import {PortfolioSearchingBoxComponent} from '../portfolio-searching-box/portfolio-searching-box.component';
-import {WeddingSnapshotsListComponent} from './wedding-snapshots-list/wedding-snapshots-list.component';
 
 export const weddingRoutes: Routes = [
   {path: '', component: TopicsComponent, pathMatch: 'full'},
@@ -28,7 +28,7 @@ export const weddingRoutes: Routes = [
   {path: 'permission', component: PermissionListComponent},
   {path: 'civil-ceremony', component: CivilCeremonyListComponent},
   {path: 'liturgy', component: LiturgyListComponent},
-  {path: 'snapshots', component: WeddingSnapshotsListComponent},
+  {path: 'snapshots', component: SnapshotsListComponent},
   {path: 'dinner-party', component: DinnerPartyListComponent}
 ];
 
@@ -49,7 +49,7 @@ export const weddingRoutes: Routes = [
     CivilCeremonyListComponent,
     LiturgyListComponent,
     DinnerPartyListComponent,
-    WeddingSnapshotsListComponent
+    SnapshotsListComponent
   ],
   exports: [
     PortfoliocardComponent,
