@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CoreModule} from "../../core/core.module";
+import {CoreModule} from '../../core/core.module';
 import {RouterModule, Routes} from '@angular/router';
 
 import {TopicsComponent} from './topics/topics.component';
@@ -17,7 +17,8 @@ import {PortfoliocardComponent} from '../portfoliocard/portfoliocard.component';
 import {PortfolioUploadLinkComponent} from '../portfolio-upload-link/portfolio-upload-link.component';
 import {PortfolioHeaderComponent} from '../portfolio-header/portfolio-header.component';
 import {PortfolioListComponent} from '../portfolio-list/portfolio-list.component';
-import { PortfolioSearchingBoxComponent } from '../portfolio-searching-box/portfolio-searching-box.component';
+import {PortfolioSearchingBoxComponent} from '../portfolio-searching-box/portfolio-searching-box.component';
+import {WeddingSnapshotsListComponent} from './wedding-snapshots-list/wedding-snapshots-list.component';
 
 export const weddingRoutes: Routes = [
   {path: '', component: TopicsComponent, pathMatch: 'full'},
@@ -27,6 +28,7 @@ export const weddingRoutes: Routes = [
   {path: 'permission', component: PermissionListComponent},
   {path: 'civil-ceremony', component: CivilCeremonyListComponent},
   {path: 'liturgy', component: LiturgyListComponent},
+  {path: 'snapshots', component: WeddingSnapshotsListComponent},
   {path: 'dinner-party', component: DinnerPartyListComponent}
 ];
 
@@ -46,7 +48,8 @@ export const weddingRoutes: Routes = [
     PermissionListComponent,
     CivilCeremonyListComponent,
     LiturgyListComponent,
-    DinnerPartyListComponent
+    DinnerPartyListComponent,
+    WeddingSnapshotsListComponent
   ],
   exports: [
     PortfoliocardComponent,
