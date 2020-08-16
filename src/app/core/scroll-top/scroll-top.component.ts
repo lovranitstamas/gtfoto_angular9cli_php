@@ -1,5 +1,6 @@
-import { Component, Inject, HostListener } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import {Component, Inject, HostListener} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+
 @Component({
   selector: 'app-scroll-top',
   templateUrl: './scroll-top.component.html',
@@ -7,15 +8,15 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ScrollTopComponent {
   windowScrolled: boolean;
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+
+  constructor(@Inject(DOCUMENT) private document: Document) {
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
-      this.windowScrolled = true;
-    } else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
-      this.windowScrolled = false;
-    }
+    window.scrollY > 500 ? this.windowScrolled = true : this.windowScrolled = false;
   }
+
   scrollToTop($event: Event) {
     (function smoothscroll() {
       $event.preventDefault();

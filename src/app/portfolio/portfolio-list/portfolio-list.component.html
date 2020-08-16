@@ -62,7 +62,7 @@
 
   </ng-container>
   <ng-template #warningMessage>
-    <h2 class="text-center">A fotóalbum üres</h2>
+    <p class="text-center empty-gallery">A fotóalbum üres</p>
   </ng-template>
   <app-portfolio-upload-link></app-portfolio-upload-link>
 </ng-container>
@@ -72,8 +72,8 @@
 
 <div class="row" *ngIf="serverError">
   <div class="col text-center">
-    <h1 class="display-1 py-2 server-error">Oops!</h1>
-    <h1 class="p-2">{{serverErrorMessage}}</h1>
-    <h2 class="p-2">Nem várt hiba! Kérem forduljon a rendszergazdához.</h2>
+    <p class="display-1 py-2 oops">Oops!</p>
+    <p class="p-2 error-code">{{serverErrorMessage}}</p>
+    <p class="p-2 system-error">Nem várt hiba! Kérem forduljon a rendszergazdához.</p>
   </div>
 </div>

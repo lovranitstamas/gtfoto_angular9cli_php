@@ -7,7 +7,7 @@ import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // menu
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 
@@ -19,6 +19,7 @@ import {UserService} from './shared/user.service';
 import {PortfolioService} from './shared/portfolio.service';
 import {ContactService} from './shared/contact.service';
 import {ImpressComponent} from './impress/impress.component';
+import {HttpsInterceptor} from './interceptor/https.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {ImpressComponent} from './impress/impress.component';
     LoggedInGuard,
     // {provide: 'API_URL', useValue: 'http://localhost/gtfoto_angular_php/api/'}
     // {provide: 'BASE_URL', useValue: './'};
-    {provide: 'API_URL', useValue: './api/'}
+    {provide: 'API_URL', useValue: './api/'},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpsInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

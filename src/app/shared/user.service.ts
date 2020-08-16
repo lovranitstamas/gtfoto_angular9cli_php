@@ -34,7 +34,7 @@ export class UserService {
   }
 
   detectTimeoutSession(): Observable<UserModel> {
-    return this._httpClient.get(`${this.apiUrl}detectTimeoutSession.php`)
+    return this._httpClient.get(`${this.apiUrl}detectTimeoutSession`)
       .pipe(map((res) => {
           return res['data'];
         }),

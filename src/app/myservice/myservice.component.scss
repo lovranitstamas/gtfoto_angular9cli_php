@@ -1,5 +1,22 @@
 @import "../../sass/variables";
 
+.container-fluid.title {
+  background-image: url('../../../src/assets/services_menu_title_row.png');
+  background-repeat: repeat-x;
+
+  .container {
+    height: 130px;
+
+    h1 {
+      text-shadow: 3px 3px 0 $dark-grey-transparent,
+      -1px -1px 0 $dark-grey-transparent,
+      1px -1px 0 $dark-grey-transparent,
+      -1px 1px 0 $dark-grey-transparent,
+      1px 1px 0 $dark-grey-transparent;
+    }
+  }
+}
+
 .what-is-the-offer {
   font-size: 1.6rem;
 }

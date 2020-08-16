@@ -2,9 +2,8 @@
 
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
-  opacity: 0;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
   border-radius: 5px;
@@ -13,6 +12,7 @@
   height: 45px;
   border: 2px solid $yellow;
   cursor: pointer;
+  opacity: 0;
 
   .arrow {
     border-bottom: solid 18px $yellow;
@@ -24,6 +24,7 @@
     border-radius: 0 !important;
   }
 }
+
 .show-scrollTop {
   opacity: 1;
   transition: all 0.2s ease-in-out;

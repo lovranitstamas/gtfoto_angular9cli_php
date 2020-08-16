@@ -1,10 +1,10 @@
 @import '../../sass/variables';
 
 ::ng-deep carousel .carousel {
-  margin-top: -60px;
+  margin-top: -50px;
 
   .carousel-indicators {
-    bottom: 50px;
+    bottom: 40px;
 
     li {
       width: 15px;
@@ -36,7 +36,25 @@
       background-size: cover;
 
       .carousel-caption {
-        bottom: 70px;
+        text-align: left;
+        margin-bottom: 50px;
+        transform: skewX(-20deg);
+
+        p {
+          border-left: 10px solid $white;
+        }
+
+        p span {
+          padding: 5px 10px;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: inline-block;
+        }
+
+        p.first-line {
+          margin-bottom: 5px;
+          font-size: 2.2rem;
+          text-transform: uppercase;
+        }
       }
     }
   }
@@ -72,11 +90,57 @@
 }
 
 section.reservation {
-  .card {
-    background-image: url('../../../src/assets/reservation.jpg');
-    background-position: center center;
+  background-color: $menu-background;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  stroke-width: 2px;
+  text-shadow: 3px 3px 0 $dark-grey-transparent,
+  -1px -1px 0 $dark-grey-transparent,
+  1px -1px 0 $dark-grey-transparent,
+  -1px 1px 0 $dark-grey-transparent,
+  1px 1px 0 $dark-grey-transparent;
+
+  h1 {
+    font-weight: 100;
+    font-size: 44px;
+    text-transform: uppercase;
+    color: $yellow;
+  }
+
+  .container {
+    padding: 20px;
+    background-image: url('../../../src/assets/welcome_row.jpg');
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    min-height: 400px;
+    height: 400px;
+
+    div {
+      height: 100%;
+
+      p {
+        transform: skewX(-20deg);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-right: 10px solid $yellow;
+        border-bottom: 1px solid $yellow;
+        padding-right: 5px;
+      }
+
+      p:nth-child(1) {
+        font-size: 1.1rem;
+      }
+
+      p:nth-child(2) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+section#iframe-content {
+  max-height: 500px !important;
+  iframe {
+    max-height: 500px !important;
   }
 }
 
@@ -98,7 +162,7 @@ section.portfolio {
     }
 
     .card-body {
-      h1 {
+      h2 {
         font-size: 24px;
         text-shadow: #0d111e 0 0 2px, #0d111e 0 0 2px, #000 0 0 2px,
         #000 0 0 2px, #0d111e 0 0 2px, #0d111e 0 0 2px;
@@ -128,14 +192,13 @@ section.portfolio {
 }
 
 @media only screen and (min-width: 768px) {
-  section.reservation {
-    padding: 20px;
-    border-top: 3px solid $yellow;
-    border-bottom: 3px solid $red;
-    background-image: linear-gradient($yellow, $red),
-    linear-gradient($yellow, $red);
-    background-size: 3px 100%;
-    background-position: 0 0, 100% 0;
-    background-repeat: no-repeat;
+  section.reservation .container div {
+    p:nth-child(1) {
+      font-size: 1.4rem;
+    }
+
+    p:nth-child(2) {
+      font-size: 1.1rem;
+    }
   }
 }

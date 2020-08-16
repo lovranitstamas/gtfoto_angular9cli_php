@@ -12,11 +12,15 @@ nav {
     border: 2px solid $hamburger-menu;
     border-radius: 5px;
 
-    div.navbar-toggler-icon div {
+    .navbar-toggler-icon {
       display: block;
-      width: 30px;
-      border-bottom: solid 5px $hamburger-menu;
-      height: 9px;
+
+      span {
+        display: block;
+        width: 30px;
+        border-bottom: solid 5px $hamburger-menu;
+        height: 9px;
+      }
     }
   }
 

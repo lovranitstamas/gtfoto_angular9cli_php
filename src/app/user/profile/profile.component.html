@@ -10,7 +10,7 @@
 
         <ng-container *ngIf="(user$ | async) as user; else loading">
           <div class="row justify-content-center m-0">
-            <img alt="Card image cap" class="profil my-3 border" [src]="user.profilePictureUrlFunction">
+            <img alt="Card image cap" class="profil my-3 border img-fluid" [src]="user.profilePictureUrlFunction">
           </div>
           <div class="card-body">
             <table class="table text-white">

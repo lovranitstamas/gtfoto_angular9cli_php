@@ -1,90 +1,80 @@
 <carousel>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel1.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel2.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel3.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel4.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel5.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel6.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <h1>A legszebb pillanatokat</h1>
-      <p>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</p>
+      <p class="first-line"><span>A legszebb pillanatokat</span></p>
+      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
     </div>
   </slide>
 </carousel>
 
-<section class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-8 mx-auto">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe
-          allowfullscreen
-          class="embed-responsive-item"
-          src="https://www.youtube.com/embed/8V9Hx3Vscrg?fbclid=IwAR1SoocsSH7xVP1DSxs0c3qZUrnIz_fY_ogA2GwTXY42S8aEgiKXR3KvHT0"
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container reservation mt-4">
-  <div class="row">
-    <div class="col-12 col-md-5">
-      <div class="card py-3">
-        <div class="card-body mx-auto">
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-7 my-auto">
-      <h1 class="mb-3 mt-4 mt-md-0">Üdvözöllek a weboldalon</h1>
-      <p class="text-justify">
+<section class="reservation">
+  <div class="container">
+    <h1 class="text-center">Üdvözöllek a weboldalon</h1>
+    <div class="d-flex flex-column justify-content-center align-items-end">
+      <p>
         Ha fotóst keresel, ha szeretnél magadról vagy családodról fotókat készíttetni, akkor jó
         helyen jársz.
       </p>
-      <p class="text-justify">
+      <p class="mt-2 font-weight-bold">
         Bármilyen felmerülő kérdés vagy kérés lenne, keress bizalommal!
       </p>
     </div>
   </div>
 </section>
 
-<section class="container-fluid portfolio mt-4">
+<section class="container-fluid p-0" id="iframe-content">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe
+          allowfullscreen
+          class="embed-responsive-item"
+          src="https://www.youtube.com/embed/8V9Hx3Vscrg?fbclid=IwAR1SoocsSH7xVP1DSxs0c3qZUrnIz_fY_ogA2GwTXY42S8aEgiKXR3KvHT0"
+    ></iframe>
+  </div>
+</section>
+
+<section class="container-fluid portfolio">
   <div class="container">
     <div class="row py-5">
       <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4 mx-auto">
         <div class="card">
           <div class="card-header text-center p-0">
             <img
-              alt="Card image cap"
-              src="assets/portrait-mini.jpg"
+                  alt="Card image cap"
+                  src="assets/portrait-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h1 class="card-title text-center">PORTRÉ FOTÓK</h1>
+            <h2 class="card-title text-center">PORTRÉ FOTÓK</h2>
             <hr/>
             <p class="card-text">
               Ha bővíteni szeretnéd minőségi fotókkal portfóliódat, profilképed vagy üzleti portrédat,
@@ -103,12 +93,12 @@
         <div class="card">
           <div class="card-header text-center p-0">
             <img
-              alt="Card image cap"
-              src="assets/child-and-family-mini.jpg"
+                  alt="Card image cap"
+                  src="assets/child-and-family-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h1 class="card-title text-center">CSALÁDI FOTÓK</h1>
+            <h2 class="card-title text-center">CSALÁDI FOTÓK</h2>
             <hr/>
             <p class="card-text">
               Családi albumodat szeretnéd gyarapítani, akkor itt az ideje időpontot foglalnod.
@@ -126,19 +116,19 @@
         <div class="card">
           <div class="card-header text-center p-0">
             <img
-              alt="Card image cap"
-              src="assets/photography.jpg"
+                  alt="Card image cap"
+                  src="assets/photography.jpg"
             />
           </div>
           <div class="card-body">
-            <h1 class="card-title text-center">FELSZERELÉSEK</h1>
+            <h2 class="card-title text-center">FELSZERELÉSEK</h2>
             <hr/>
             <p class="card-text">
               2db Nikon D750 váz, valamint:
             </p>
             <ul>
               <li>Nikkor 50mm f/1.8G</li>
-              <li>Nikkor 85mm f/1.8G </li>
+              <li>Nikkor 85mm f/1.8G</li>
               <li>Nikkor 24-70mm f/2.8G ED</li>
               <li>Nikkor 70-200mm f/2.8GII ED</li>
             </ul>
