@@ -13,11 +13,11 @@
 
             <div class="card-columns" data-aos="fade-up">
               <div class="card" *ngFor="let picture of masonryImages;">
-                  <app-portfoliocard
-                  [picture]="picture"
-                  nextLabel="Szerkesztés"
-                  [isAdmin]=isAdmin
-                  [isLoggedIn]=isLoggedIn
+                <app-portfoliocard
+                      [picture]="picture"
+                      nextLabel="Szerkesztés"
+                      [isAdmin]=isAdmin
+                      [isLoggedIn]=isLoggedIn
                 >
                 </app-portfoliocard>
                 <!--<div class="card-body">
@@ -53,11 +53,15 @@
 
     </div>
 
-    <button class="btn btn-full-list-view bg-warning my-3"
-            type="button"
-            *ngIf="limit < allPictures.length && allPictures.length != masonryImages.length"
-            (click)="showMoreImages()"><span>Mutasd a többi képet</span>
-    </button>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-full-list-view bg-warning my-3"
+                type="button"
+                *ngIf="limit < allPictures.length && allPictures.length != masonryImages.length"
+                (click)="showMoreImages()"><span>Mutasd a többi képet</span>
+        </button>
+      </div>
+    </div>
 
 
   </ng-container>
