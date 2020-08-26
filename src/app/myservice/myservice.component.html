@@ -1,16 +1,15 @@
-<div class="container-fluid title">
-  <div class="d-flex align-items-center justify-content-center container">
-      <h1 class="text-center">
-        SZOLGÁLTATÁSOK
-      </h1>
-  </div>
-</div>
-<div class="container">
+<div class="container-fluid menu-background"></div>
+<div class="container mt-3">
+  <h2>
+    Szolgáltatások
+  </h2>
+
+
   <div class="row py-3">
     <div class="col-md-8 col-12">
-      <h2 class="mb-4">
+      <h3 class="mb-4">
         ESKÜVŐ FOTÓZÁS
-      </h2>
+      </h3>
       <p>
         Kisebb-nagyobb lakodalmak fotózását vállalom, igyekszem minden fontos
         pillanatot megörökíteni és a lehető legtöbb, legszebb pillanatot vissza
@@ -52,6 +51,13 @@
         <li>Fotókönyv</li>
         <li>A kész fotókat pendriveon gravírozott díszdobozban kerülnek átadásra.</li>
       </ul>
+
+      <p>
+        <a routerLink="/portfolio/wedding"
+           class="btn navigation"
+           role="button"
+           aria-pressed="true">Megtekintés</a>
+      </p>
     </div>
 
     <div class="col-md-4 col-12 text-center">
@@ -63,13 +69,20 @@
     </div>
   </div>
 
-  <hr class="hr-style"/>
+  <hr>
 
   <div class="row py-3">
-    <div class="col-md-8 col-11 mx-auto rounded border border-warning event-bg">
-      <h2 class="mt-3">
+    <div class="col-md-4 col-12 mt-3 mt-md-0 text-center">
+      <img
+            src="assets/portrait-service.jpg"
+            alt="portrait-service"
+            class="img-thumbnail"/>
+    </div>
+
+    <div class="col-md-8 col-11 mx-auto event-bg">
+      <h3 class="mt-3">
         PORTRÉ ÉS MODELL FOTÓZÁS
-      </h2>
+      </h3>
 
       <p class="mt-5 what-is-the-offer">Mit tartalmaz az ajánlatom?</p>
 
@@ -77,23 +90,23 @@
         <li>1-1,5 óra fotózás, 10-15 kidolgozott képsorozat.</li>
         <li>Előre egyeztetett időpontban, szabadtéri vagy stúdió fotózásra.</li>
       </ul>
-    </div>
 
-    <div class="col-md-4 col-12 mt-3 mt-md-0 text-center">
-      <img
-            src="assets/portrait-service.jpg"
-            alt="portrait-service"
-            class="img-thumbnail"/>
+      <p>
+        <a routerLink="/portfolio/portrait"
+           class="btn navigation"
+           role="button"
+           aria-pressed="true">Megtekintés</a>
+      </p>
     </div>
   </div>
 
-  <hr class="hr-style"/>
+  <hr>
 
   <div class="row py-3">
-    <div class="col-md-8 col-12">
-      <h2 class="mb-4">
+    <div class="col-md-6 col-12">
+      <h3 class="mb-4">
         ESEMÉNY FOTÓZÁS
-      </h2>
+      </h3>
 
       <p class="mt-5 what-is-the-offer">Mit tartalmaz az ajánlatom?</p>
 
@@ -102,26 +115,21 @@
         <li>Születésnap</li>
         <li>Céges rendezvény</li>
       </ul>
+
+      <p>
+        <a routerLink="/portfolio/christening"
+           class="btn navigation"
+           role="button"
+           aria-pressed="true">Megtekintés</a>
+      </p>
     </div>
 
-    <div class="col-md-4 col-12 text-center">
-      <img
-            src="assets/event-service.jpg"
-            alt="event-service"
-            class="img-thumbnail"
-      />
-    </div>
-  </div>
-
-  <hr class="hr-style"/>
-
-  <div class="row py-3">
     <div
-          class="col-md-8 col-11 mx-auto rounded border border-warning event-bg"
+          class="col-md-6 col-12"
     >
-      <h2 class="mt-4">
+      <h3 class="mb-4">
         GYEREK ÉS CSALÁDI FOTÓZÁS
-      </h2>
+      </h3>
 
       <p class="mt-5 what-is-the-offer">Mit tartalmaz az ajánlatom?</p>
 
@@ -134,16 +142,15 @@
           Stúdió fotózás: 15-20 kidolgozott képsorozatot.
         </li>
       </ul>
-    </div>
 
-    <div class="col-md-4 col-12 mt-3 mt-md-0 text-center">
-      <img
-            src="assets/family-service.jpg"
-            alt="family-service"
-            class="img-thumbnail"
-      />
+      <p>
+        <a routerLink="/portfolio/child-and-family"
+           class="btn navigation"
+           role="button"
+           aria-pressed="true">Megtekintés</a>
+      </p>
     </div>
   </div>
+
 </div>
 
-<app-menu-indicator title="SZOLGÁLTATÁSOK"></app-menu-indicator>

@@ -1,8 +1,10 @@
+<!-- https://bit.dev/valor-software/ngx-bootstrap/carousel-->
 <carousel>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel1.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line init-title"><span>A legszebb pillanatokat</span></p>
+      <p class="init-subtitle"><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel
+        .</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel2.jpg)' }">
@@ -37,75 +39,75 @@
   </slide>
 </carousel>
 
-<section class="reservation">
+<section id="welcome">
   <div class="container">
-    <h1 class="text-center">Üdvözöllek a weboldalon</h1>
-    <div class="d-flex flex-column justify-content-center align-items-end">
-      <p>
-        Ha fotóst keresel, ha szeretnél magadról vagy családodról fotókat készíttetni, akkor jó
-        helyen jársz.
-      </p>
-      <p class="mt-2 font-weight-bold">
-        Bármilyen felmerülő kérdés vagy kérés lenne, keress bizalommal!
-      </p>
+    <h2>Üdvözöllek a weboldalamon</h2>
+    <p>
+      Ha fotóst keresel, ha szeretnél magadról vagy családodról fotókat készíttetni, akkor jó
+      helyen jársz.
+    </p>
+    <p>
+      Bármilyen felmerülő kérdés vagy kérés lenne, keress bizalommal!
+    </p>
+  </div>
+</section>
+
+<section id="iframe-content">
+  <div class="container-fluid">
+    <h2>Egy kis kedvcsináló</h2>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe
+            allowfullscreen
+            class="embed-responsive-item"
+            src="https://www.youtube.com/embed/8V9Hx3Vscrg?fbclid=IwAR1SoocsSH7xVP1DSxs0c3qZUrnIz_fY_ogA2GwTXY42S8aEgiKXR3KvHT0"
+      ></iframe>
     </div>
   </div>
 </section>
 
-<section class="container-fluid p-0" id="iframe-content">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe
-          allowfullscreen
-          class="embed-responsive-item"
-          src="https://www.youtube.com/embed/8V9Hx3Vscrg?fbclid=IwAR1SoocsSH7xVP1DSxs0c3qZUrnIz_fY_ogA2GwTXY42S8aEgiKXR3KvHT0"
-    ></iframe>
-  </div>
-</section>
-
-<section class="container-fluid portfolio">
-  <div class="container">
-    <div class="row py-5">
-      <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4 mx-auto">
-        <div class="card">
-          <div class="card-header text-center p-0">
+<section id="time-travel">
+  <div class="container-fluid">
+    <h2>Vissza az időbe</h2>
+    <div class="row">
+      <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4">
+        <div class="card mx-auto">
+          <div class="card-header">
             <img
-                  alt="Card image cap"
+                  alt="portrait"
                   src="assets/portrait-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">PORTRÉ FOTÓK</h2>
-            <hr/>
+            <h3 class="card-title text-center">PORTRÉ FOTÓK</h3>
             <p class="card-text">
               Ha bővíteni szeretnéd minőségi fotókkal portfóliódat, profilképed vagy üzleti portrédat,
               keress bizalommal.
             </p>
           </div>
-          <div class="card-footer text-center">
-            <button class="btn btn-outline-warning" type="button" [routerLink]="'../portfolio/portrait'">
+          <div class="card-footer">
+            <button class="btn" type="button" [routerLink]="'../portfolio/portrait'">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
           </div>
         </div>
       </div>
-      <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4 mx-auto">
-        <div class="card">
-          <div class="card-header text-center p-0">
+      <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4">
+        <div class="card mx-auto">
+          <div class="card-header">
             <img
-                  alt="Card image cap"
+                  alt="family"
                   src="assets/child-and-family-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">CSALÁDI FOTÓK</h2>
-            <hr/>
+            <h3 class="card-title text-center">CSALÁDI FOTÓK</h3>
             <p class="card-text">
               Családi albumodat szeretnéd gyarapítani, akkor itt az ideje időpontot foglalnod.
             </p>
           </div>
-          <div class="card-footer text-center">
-            <button class="btn btn-outline-warning" type="button" [routerLink]="'../portfolio/child-and-family'">
+          <div class="card-footer">
+            <button class="btn pulse" type="button" [routerLink]="'../portfolio/child-and-family'">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
@@ -113,37 +115,51 @@
         </div>
       </div>
       <div class="mb-4 mb-lg-0 col-12 col-md-6 col-lg-4 mx-auto">
-        <div class="card">
-          <div class="card-header text-center p-0">
+        <div class="card mx-auto">
+          <div class="card-header">
             <img
-                  alt="Card image cap"
-                  src="assets/photography.jpg"
+                  alt="family"
+                  src="assets/child-and-family-mini.jpg"
             />
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">FELSZERELÉSEK</h2>
-            <hr/>
+            <h3 class="card-title">ESKÜVŐ FOTÓK</h3>
             <p class="card-text">
-              2db Nikon D750 váz, valamint:
-            </p>
-            <ul>
-              <li>Nikkor 50mm f/1.8G</li>
-              <li>Nikkor 85mm f/1.8G</li>
-              <li>Nikkor 24-70mm f/2.8G ED</li>
-              <li>Nikkor 70-200mm f/2.8GII ED</li>
-            </ul>
-            <p class="card-text">
-              egyéb kiegészítőkkel
+              Családi albumodat szeretnéd gyarapítani, akkor itt az ideje időpontot foglalnod.
             </p>
           </div>
-          <!--<div class="card-footer text-center">
-            <button class="btn btn-outline-warning" type="button">
+          <div class="card-footer">
+            <button class="btn" type="button" [routerLink]="'../portfolio/wedding'">
               Tovább
               <i class="fa fa-arrow-right"></i>
             </button>
-          </div>-->
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<section id="work-morale">
+  <div class="container">
+    <h2>Felszerelések</h2>
+    <div class="nikon">
+      <div class="start">
+        <h3>2db Nikon D750 váz</h3>
+      </div>
+      <div class="inner">
+        <ul>
+          <li>- Nikkor 50mm f/1.8G</li>
+          <li>- Nikkor 85mm f/1.8G</li>
+          <li>- Nikkor 24-70mm f/2.8G ED</li>
+          <li>- Nikkor 70-200mm f/2.8GII ED</li>
+        </ul>
+      </div>
+      <div class="last">
+        <h3>egyéb kiegészítőkkel</h3>
+      </div>
+    </div>
+  </div>
+
+
 </section>

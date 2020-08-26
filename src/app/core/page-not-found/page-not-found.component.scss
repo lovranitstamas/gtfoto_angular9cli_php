@@ -1,5 +1,13 @@
 @import '../../../sass/variables';
 
-h1 {
-  text-shadow: -2px 0 $black, 0 2px $black, 2px 0 $black, 0 -2px $black;
+p.system-error {
+  font-size: 1.5rem;
+}
+
+p.oops {
+  text-shadow: -2px 0 $orange, 0 2px $orange, 2px 0 $orange, 0 -2px $orange;
+}
+
+p.error-code {
+  font-size: 2.8rem;
 }

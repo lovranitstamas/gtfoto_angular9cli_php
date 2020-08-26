@@ -5,9 +5,8 @@
 }
 
 .loader {
-  border: 16px solid $white;
-  border-top: 16px solid blue;
-  border-bottom: 16px solid blue;
+  border-top: 16px solid $black;
+  border-bottom: 16px solid $black;
   border-radius: 50%;
   animation: spin 2s linear infinite;
 

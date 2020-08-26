@@ -1,18 +1,58 @@
 @import "../../../sass/variables";
 
 footer {
-  background-color: $menu-background;
-  color: $yellow;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  color: $white;
+  background-color: $black;
 
-  .container .row {
-    height: 130px;
+  .container {
+    min-height: 60px;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    margin: auto;
+
+    .company {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .links ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-content: center;
+
+      li {
+        padding: 0 5px;
+
+        a {
+          color: $orange;
+        }
+      }
+    }
   }
 
   .fa-facebook-square {
-    color: $yellow;
+    /*color: $yellow;*/
     font-size: xx-large;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    flex-direction: row !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    margin: 0;
+    min-width: 1200px;
   }
 }

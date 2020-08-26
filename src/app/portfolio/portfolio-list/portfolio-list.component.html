@@ -1,83 +1,86 @@
-<ng-container *ngIf="!loading && !serverError; else loadingWarning">
-  <ng-container *ngIf="!emptyList; else warningMessage">
+<div class="container">
+  <ng-container *ngIf="!loading && !serverError; else loadingWarning">
+    <ng-container *ngIf="!emptyList; else warningMessage">
 
-    <app-portfolio-searching-box *ngIf="!emptyList && !serverError"
-                                 (valueChange)='detectSearching($event)'></app-portfolio-searching-box>
+      <app-portfolio-searching-box *ngIf="!emptyList && !serverError"
+                                   (valueChange)='detectSearching($event)'></app-portfolio-searching-box>
 
-    <div class="site-wrap">
+      <div class="site-wrap">
 
-      <main class="main-content">
-        <div class="container-fluid photos">
+        <main class="main-content">
+          <div class="container-fluid photos">
 
-          <div class="row align-items-stretch">
+            <div class="row align-items-stretch">
 
-            <div class="card-columns" data-aos="fade-up">
-              <div class="card" *ngFor="let picture of masonryImages;">
-                <app-portfoliocard
-                      [picture]="picture"
-                      nextLabel="Szerkesztés"
-                      [isAdmin]=isAdmin
-                      [isLoggedIn]=isLoggedIn
-                >
-                </app-portfoliocard>
-                <!--<div class="card-body">
-                  <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
-                    <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid card-img-top">
-                    <div class="photo-text-more">
-                      <span class="icon icon-search"></span>
-                    </div>
-                  </a>
+              <div class="card-columns" data-aos="fade-up">
+                <div class="card" *ngFor="let picture of masonryImages;">
+                  <app-portfoliocard
+                        [picture]="picture"
+                        nextLabel="Szerkesztés"
+                        [isAdmin]=isAdmin
+                        [isLoggedIn]=isLoggedIn
+                  >
+                  </app-portfoliocard>
+                  <!--<div class="card-body">
+                    <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
+                      <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid card-img-top">
+                      <div class="photo-text-more">
+                        <span class="icon icon-search"></span>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="card-footer">
+                    <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
+                      <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
+                  </div>-->
                 </div>
-                <div class="card-footer">
-                  <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
-                    <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
-                </div>-->
               </div>
+
+              <!--<div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" *ngFor="let picture of masonryImages;">
+                <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
+                  <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid">
+                  <div class="photo-text-more">
+                    <span class="icon icon-search"></span>
+                  </div>
+                </a>
+                <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
+                  <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
+              </div>-->
+
             </div>
 
-            <!--<div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" *ngFor="let picture of masonryImages;">
-              <a [href]="picture.fileURLFunction" class="d-block photo-item" data-fancybox="gallery">
-                <img [src]="picture.fileURLFunction" alt="Image" class="img-fluid">
-                <div class="photo-text-more">
-                  <span class="icon icon-search"></span>
-                </div>
-              </a>
-              <p>{{picture.dateOfEventFunction}} <span *ngIf="isAdmin && isLoggedIn">-</span>&nbsp;
-                <a [routerLink]="['/portfolio/edit',picture.subfolderFunction,picture.idFunction]" *ngIf="isAdmin && isLoggedIn">Szerkesztés</a></p>
-            </div>-->
-
           </div>
+        </main>
 
-        </div>
-      </main>
-
-    </div>
-
-    <div class="row">
-      <div class="col-12 text-center">
-        <button class="btn btn-full-list-view bg-warning my-3"
-                type="button"
-                *ngIf="limit < allPictures.length && allPictures.length != masonryImages.length"
-                (click)="showMoreImages()"><span>Mutasd a többi képet</span>
-        </button>
       </div>
-    </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn btn-full-list-view bg-warning my-3"
+                  type="button"
+                  *ngIf="limit < allPictures.length && allPictures.length != masonryImages.length"
+                  (click)="showMoreImages()"><span>Mutasd a többi képet</span>
+          </button>
+        </div>
+      </div>
 
 
+    </ng-container>
+    <ng-template #warningMessage>
+      <p class="text-center empty-gallery">A fotóalbum üres</p>
+    </ng-template>
+    <app-portfolio-upload-link></app-portfolio-upload-link>
   </ng-container>
-  <ng-template #warningMessage>
-    <p class="text-center empty-gallery">A fotóalbum üres</p>
+  <ng-template #loadingWarning>
+    <app-loading-spinner [loaderWidth]="100" [loaderHeight]="100" class="mb-5"
+                         *ngIf="!serverError"></app-loading-spinner>
   </ng-template>
-  <app-portfolio-upload-link></app-portfolio-upload-link>
-</ng-container>
-<ng-template #loadingWarning>
-  <app-loading-spinner [loaderWidth]="100" [loaderHeight]="100" class="mb-5" *ngIf="!serverError"></app-loading-spinner>
-</ng-template>
 
-<div class="row" *ngIf="serverError">
-  <div class="col text-center">
-    <p class="display-1 py-2 oops">Oops!</p>
-    <p class="p-2 error-code">{{serverErrorMessage}}</p>
-    <p class="p-2 system-error">Nem várt hiba! Kérem forduljon a rendszergazdához.</p>
+  <div class="row" *ngIf="serverError">
+    <div class="col text-center">
+      <p class="display-1 py-2 oops">Oops!</p>
+      <p class="p-2 error-code">{{serverErrorMessage}}</p>
+      <p class="p-2 system-error">Nem várt hiba! Kérem forduljon a rendszergazdához.</p>
+    </div>
   </div>
 </div>

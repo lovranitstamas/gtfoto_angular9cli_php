@@ -3,7 +3,6 @@ import {UserService} from '../../shared/user.service';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {UserModel} from '../../shared/user-model';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +13,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private _routerSub = Subscription.EMPTY;
   private _routerSubEnd = Subscription.EMPTY;
-  private remoteUser: UserModel;
+  windowScrolled: boolean;
 
   isCollapsed = true;
   isLoggedIn = false;
@@ -60,6 +59,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     );
   }
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    window.scrollY > 200 ? this.windowScrolled = true : this.windowScrolled = false;
+  }
+
+
   ngOnInit() {
     this._routerSub = this._router.events.pipe(
       filter(event => event instanceof NavigationStart))
@@ -75,8 +80,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this._routerSub.unsubscribe();
-    // this._routerSubEnd.unsubscribe();
+    this._routerSub.unsubscribe();
+    this._routerSubEnd.unsubscribe();
   }
 
   clickOnRouterLink() {
@@ -93,7 +98,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     const target = event.target;
-    if (target.innerWidth > 576) {
+    if (target.innerWidth < 768) {
       this.isCollapsed = true;
     }
   }

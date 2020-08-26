@@ -2,7 +2,7 @@
 
 .card-body {
   padding: 0;
-  color: $yellow;
+  color: $orange;
   font-size: large;
 
   img {
@@ -14,25 +14,12 @@
   padding: 0;
 
   a {
-    color: $yellow;
+    color: $orange;
     font-size: 18px;
 
     &:hover {
-      color: $yellow;
+      color: $orange;
     }
   }
 }
-
-
-/*.figure-caption {
-  color: $yellow;
-  font-size: large;
-
-  a {
-    color: $yellow;
-    &:hover{
-      color: $yellow;
-    }
-  }
-}*/
 

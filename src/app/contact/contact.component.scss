@@ -1,4 +1,13 @@
-.call-number {
-  color: lightgoldenrodyellow;
-  font-size: 18px;
+@import "../../sass/variables";
+
+.container {
+
+    padding-top: 150px !important;
+
+    .call-number {
+      color: $red;
+      font-size: 18px;
+    }
+
+
 }

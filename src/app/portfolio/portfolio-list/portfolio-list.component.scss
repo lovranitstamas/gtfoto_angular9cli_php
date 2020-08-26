@@ -11,7 +11,7 @@ p.empty-gallery, p.system-error {
 }
 
 p.oops {
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  text-shadow: -2px 0 $orange, 0 2px $orange, 2px 0 $orange, 0 -2px $orange;
 }
 
 p.error-code {

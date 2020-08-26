@@ -1,22 +1,19 @@
 @import '../../../sass/variables';
 
-.title {
-  background-color: $dark-grey-transparent;
-  border: 1px solid $yellow;
+.p-header.container {
+  text-align: center;
+  padding-top: 150px;
+
+  h2 {
+    text-transform: uppercase;
+    color: $black;
+    font-size: 3rem;
+    font-family: "Open Sans", sans-serif;
+  }
 }
 
-@media only screen and (max-width: 575px) {
-  .header-row {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1{
-    font-size: 22px;
-  }
-
-  .subtitle {
-    display: none;
+@media only screen and (min-width: 768px) {
+  .container {
+    padding-top: 0;
   }
 }

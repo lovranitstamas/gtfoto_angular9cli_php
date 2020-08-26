@@ -1,33 +1,55 @@
 @import '../../sass/variables';
 
-ul {
-  list-style: none;
+.container {
+
+  padding-top: 150px !important;
+  padding-bottom: 20px;
+
+  h2 {
+    text-transform: uppercase;
+    color: $red;
+  }
+
+  h2::after {
+    display: inline-block;
+    content: "";
+    border-top: .3rem solid $red;
+    width: 20vw;
+    margin: 0 1rem;
+    transform: translateY(-0.5rem);
+  }
+
+  .owners {
+    margin-top: 100px;
+
+    div {
+      margin-left: auto;
+      margin-right: auto;
+      border-bottom: .3rem solid $red;
+      border-right: none;
+      text-align: center;
+      margin-bottom: 15px;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    div:nth-child(3) {
+      border: none !important;
+    }
+  }
 }
 
-ul, li {
-  padding: 0;
-  margin: 0;
-}
+@media only screen and (min-width: 768px) {
+  .owners {
 
-.first-element {
-  font-size: 20px;
-  text-decoration: underline;
-  margin-bottom: 10px;
-}
-
-div.content {
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 5px solid $yellow;
-  background-color: $light-grey-transparent;
-
-  a {
-    color: lightgoldenrodyellow;
-    font-size: 18px;
-
-    &:hover {
-      color: $yellow;
+    div {
+      margin-bottom: 0;
+      border-right: .3rem solid $red !important;
+      border-bottom: none !important;
     }
   }
 }

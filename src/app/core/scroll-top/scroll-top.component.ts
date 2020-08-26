@@ -14,7 +14,7 @@ export class ScrollTopComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    window.scrollY > 500 ? this.windowScrolled = true : this.windowScrolled = false;
+    window.scrollY > 200 ? this.windowScrolled = true : this.windowScrolled = false;
   }
 
   scrollToTop($event: Event) {

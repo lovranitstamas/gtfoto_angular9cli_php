@@ -2,7 +2,7 @@
 
 .scroll-to-top {
   position: fixed;
-  bottom: 40px;
+  bottom: 10px;
   right: 20px;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
@@ -10,12 +10,12 @@
   background-color: $black;
   width: 45px;
   height: 45px;
-  border: 2px solid $yellow;
+  border: 2px solid $orange;
   cursor: pointer;
   opacity: 0;
 
   .arrow {
-    border-bottom: solid 18px $yellow;
+    border-bottom: solid 18px $orange;
     border-left: solid 10px $black;
     border-right: solid 10px $black;
     width: 0 !important;

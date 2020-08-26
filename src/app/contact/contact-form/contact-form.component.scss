@@ -15,11 +15,22 @@
 }
 
 .form-control:focus {
-  background-color: $dark-grey-transparent;
-  border-color: $yellow;
+  background-color: $grey;
+  border-color: $green;
   outline: none;
   box-shadow: none;
-  color: $white;
+  color: $red;
+}
+
+button {
+  background-color: $red;
+  color: $white !important;
+}
+
+button:hover {
+  transform: scale(1.2, 1.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
 input[type="checkbox"] {
@@ -39,11 +50,10 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: $yellow;
+  background-color: $green;
 }
 
 span.dataManagement, a, a:hover {
-  color: $white;
   font-size: 20px;
   font-style: italic;
 }

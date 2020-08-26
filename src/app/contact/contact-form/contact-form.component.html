@@ -57,7 +57,7 @@
   </div>
   <div class="form-row">
     <div class="col-sm-10 col-md-4">
-      <button type="submit" class="btn btn-primary mb-3" [disabled]="inactiveStateOfSendButton">KÜLDÉS</button>
+      <button type="submit" class="btn mb-3" [disabled]="inactiveStateOfSendButton">KÜLDÉS</button>
     </div>
     <div class="col-sm-2 col-md-8" *ngIf="inactiveStateOfSendButton">
       <app-loading-spinner [loaderWidth]="35" [loaderHeight]="35"></app-loading-spinner>
