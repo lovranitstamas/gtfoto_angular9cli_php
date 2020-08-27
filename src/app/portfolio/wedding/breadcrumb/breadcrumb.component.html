@@ -1,10 +1,7 @@
-<!--<div class="row">
-  <div class="col-12">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="../">{{category}}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{submenu}}</li>
-      </ol>
-    </nav>
-  </div>
-</div>-->
+<div id="breadcrumb">
+  <ul class="d-none d-xl-block">
+    <li><a [routerLink]="['/portfolio/']" [ngStyle]="{opacity: getStatus()}">Portfólió</a></li>
+    <li><a [routerLink]="['/portfolio/',dCategory]" [ngStyle]="{opacity: getStatus()}">{{category}}</a></li>
+    <li><a [routerLink]="['/portfolio/',dCategory,dSubmenu]" [ngStyle]="{opacity: getStatus()}">{{submenu}}</a></li>
+  </ul>
+</div>

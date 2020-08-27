@@ -1,0 +1,101 @@
+@import '../../../../sass/variables';
+/*https://1stwebdesigner.com/breadcrumb-css-snippets/*/
+
+#breadcrumb {
+  position: fixed;
+  top: 75px;
+  left: 145px;
+  z-index: 1030;
+
+  ul {
+
+    list-style: none;
+    display: inline-block;
+
+    .icon {
+      font-size: 14px;
+    }
+
+    li {
+      float: left;
+
+      a {
+        color: #FFF;
+        display: block;
+        background: $red;
+        text-decoration: none;
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+        text-align: center;
+        margin-right: 20px; /*23*/
+      }
+
+      a {
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          border: 0 solid $red;
+          border-width: 20px 10px;
+          width: 0;
+          height: 0;
+        }
+
+        &:before {
+          left: -20px;
+          border-left-color: transparent;
+        }
+
+        &:after {
+          left: 100%;
+          border-color: transparent;
+          border-left-color: $red;
+        }
+
+        &:hover {
+          background-color: $green;
+
+          &:before {
+            border-color: $green;
+            border-left-color: transparent;
+          }
+
+          &:after {
+            border-left-color: $green;
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        a {
+          background-color: $black;
+
+          &:before {
+            border-color: $black;
+            border-left-color: transparent;
+          }
+
+          &:after {
+            border-left-color: $black;
+          }
+
+          &:hover {
+            background-color: $green;
+
+            &:before {
+              border-color: $green;
+              border-left-color: transparent;
+            }
+
+            &:after {
+              border-left-color: $green;
+            }
+          }
+        }
+      }
+    }
+  }
+}
