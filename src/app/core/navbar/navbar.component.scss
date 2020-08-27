@@ -38,6 +38,15 @@ nav {
       background: rgba(15, 1, 22, 0.3);
     }
 
+    a.nav-link:hover {
+      font-size: 25px;
+      padding-top: 6px;
+      padding-bottom: 7px;
+      color: $green;
+      text-shadow: -1px -1px 0 $black, 1px -1px 0 $black, -1px 1px 0 $black, 1px 1px 0 $black;
+      transition: font-size 2s;
+    }
+
     ul {
 
       ul.dropdown-menu {

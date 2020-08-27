@@ -1,19 +1,37 @@
 @import '../../../sass/variables';
-/*
+
 #menuIndicator {
-  background-color: $yellow;
-  padding: 15px;
   position: fixed;
-  top: 350px;
-  left: -135px;
-  z-index: 1000;
-  color: $black;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  font-weight: bold;
-  border: 1px double $hamburger-menu;
-  transform: rotate(90deg);
-  height: 60px;
-  width: 330px;
-  text-align: center;
-}*/
+  top: 20%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  div {
+    background-color: $green;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 2px double $black;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-weight: bold;
+
+    animation: rotating 8s infinite ease-in-out;
+    animation-delay: 5s;
+  }
+}
+
+@keyframes rotating {
+  70%, 100% {
+    transform: rotateY(360deg);
+  }
+  0% {
+    transform: rotateY(0);
+  }
+
+}

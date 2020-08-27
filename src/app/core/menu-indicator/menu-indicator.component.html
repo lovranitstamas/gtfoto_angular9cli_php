@@ -1,3 +1,5 @@
-<!--<div id="menuIndicator" class="d-none d-sm-block">
-  <h5>{{title}}</h5>
-</div>-->
+<div id="menuIndicator" class="d-none d-sm-block" *ngIf="titleArray">
+  <div *ngFor="let word of titleArray">
+    {{word}}
+  </div>
+</div>

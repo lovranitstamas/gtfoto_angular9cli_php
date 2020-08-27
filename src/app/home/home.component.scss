@@ -61,7 +61,7 @@
   }
 
   .carousel-indicators {
-    bottom: 50px;
+    bottom: 65px;
 
     li {
       width: 15px;
@@ -202,7 +202,6 @@ section#time-travel {
       }
     }
 
-
   }
 
 }
@@ -236,7 +235,6 @@ section#work-morale {
 
     div {
 
-
       background: none;
 
       display: flex;
@@ -259,6 +257,13 @@ section#work-morale {
 }
 
 @media only screen and (min-width: 768px) {
+
+  ::ng-deep carousel .carousel {
+    .carousel-indicators {
+      bottom: 30px;
+    }
+  }
+
   ::ng-deep carousel .carousel-control-prev-icon,
   ::ng-deep carousel .carousel-control-next-icon {
     display: block;
