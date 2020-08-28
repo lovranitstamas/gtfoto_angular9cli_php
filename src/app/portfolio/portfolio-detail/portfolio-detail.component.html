@@ -96,7 +96,7 @@
               <ng-container *ngIf="(userService.isLoggedIn$ | async) &&  !serverError">
                 <ng-container *ngIf="viewForm; else editButtons">
                   <button type="button"
-                          class="btn btn-primary btn-lg mr-1"
+                          class="btn btn-primary btn-lg mr-1 mt-1 mt-md-0"
                           (click)="viewForm = false"
                   >Szerkesztés
                   </button>
@@ -116,7 +116,7 @@
                 </ng-template>
               </ng-container>
               <button type="button"
-                      class="btn btn-lg ml-1"
+                      class="btn btn-lg ml-1 mt-1 mt-sm-0"
                       (click)="navigateBack()"
               >Vissza
               </button>
