@@ -1,62 +1,66 @@
 @import "../../../sass/variables";
 
-.login-card {
+.container {
+  padding-top: 150px;
 
-  .login-card-header {
-    background-color: $black;
-    letter-spacing: 3px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: $white;
-  }
+  .login-card {
 
-  button {
-    color: $white;
-  }
-
-  .form-control {
-    border-color: $grey;
-
-    &:focus {
-      background-color: $grey;
-      border-color: $green;
-      outline: none;
-      box-shadow: none;
-      color: $red;
+    .login-card-header {
+      background-color: $black;
+      letter-spacing: 3px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $white;
     }
-  }
 
-  .btn-login {
-    letter-spacing: 3px;
-    font-weight: 600;
-    color: $white;
-    background-color: $red;
-    transition: all 0.5s;
-  }
+    button {
+      color: $white;
+    }
 
-  span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
+    .form-control {
+      border-color: $grey;
 
-  span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
+      &:focus {
+        background-color: $grey;
+        border-color: $green;
+        outline: none;
+        box-shadow: none;
+        color: $red;
+      }
+    }
 
-  &:hover span {
-    padding-right: 25px;
-  }
+    .btn-login {
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: $white;
+      background-color: $red;
+      transition: all 0.5s;
+    }
 
-  &:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+    span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
 
+    span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    &:hover span {
+      padding-right: 25px;
+    }
+
+    &:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+  }
 }
