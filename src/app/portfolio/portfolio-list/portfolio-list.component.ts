@@ -125,4 +125,8 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
     this.filteredText$.next(filteredText);
   }
 
+  scrollDown($event: MouseEvent) {
+    $event.preventDefault();
+    window.scrollTo(0, 150);
+  }
 }

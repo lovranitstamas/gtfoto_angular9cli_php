@@ -5,6 +5,10 @@
       <app-portfolio-searching-box *ngIf="!emptyList && !serverError"
                                    (valueChange)='detectSearching($event)'></app-portfolio-searching-box>
 
+      <div class="scroll-down">
+        <img
+              alt="portrait"
+              src="assets/scroll_down.png" class="img-fluid" id="scroll-down-img" (click)="scrollDown($event)"></div>
       <div class="site-wrap">
 
         <main class="main-content">

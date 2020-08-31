@@ -1,5 +1,31 @@
 @import '../../../sass/variables';
 
+.scroll-down {
+  text-align: center;
+  #scroll-down-img {
+    animation: scroll-animation 1.5s ease-in-out infinite;
+    cursor: pointer;
+  }
+}
+
+@keyframes scroll-animation {
+  0% {
+    transform: translateY(-35px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+
+  /*
+    0%, 100% {
+    transform: translateY(50px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+   */
+}
+
 .card {
   border: none;
   padding: 0;
@@ -16,5 +42,11 @@ p.oops {
 
 p.error-code {
   font-size: 2.8rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .scroll-down {
+    display: none;
+  }
 }
 
