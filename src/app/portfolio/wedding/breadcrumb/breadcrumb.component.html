@@ -1,6 +1,6 @@
 <div id="breadcrumb">
   <ul class="d-none d-xl-block">
-    <li><a [routerLink]="['/portfolio/']" [ngStyle]="{opacity: getStatus()}">Portfólió</a></li>
+    <li><a [ngStyle]="{opacity: getStatus()}">Portfólió</a></li>
     <li><a [routerLink]="['/portfolio/',dCategory]" [ngStyle]="{opacity: getStatus()}">{{category}}</a></li>
     <li><a [routerLink]="['/portfolio/',dCategory,dSubmenu]" [ngStyle]="{opacity: getStatus()}">{{submenu}}</a></li>
   </ul>
