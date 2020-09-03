@@ -170,15 +170,16 @@ section#time-travel {
 
     .card {
 
-      width: 95%;
+      width: 90%;
 
       .card-header {
-        min-height: 100px;
+        height: 270px;
         padding: 0;
+        overflow: hidden;
+        text-align: center;
 
         img {
-          max-width: 100%;
-          margin: 0;
+          height: 270px;
         }
       }
 
@@ -207,17 +208,15 @@ section#time-travel {
 }
 
 section#work-morale {
-  padding: 40px 0;
+  padding: 40px 10px;
 
   background-image: url('../../../src/assets/dia.png');
   background-repeat: repeat-x;
   background-position: center center;
 
   .container {
-    background-image: url('../../../src/assets/nikon_bg1_mobile.png');
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    border: 5px solid $black;
+    border-radius: 20px;
   }
 
   h2 {
@@ -252,6 +251,14 @@ section#work-morale {
 
         font-size: 18px;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  section#time-travel {
+    .card {
+      width: 60% !important;
     }
   }
 }
@@ -301,15 +308,21 @@ section#work-morale {
     }
   }
 
+  section#work-morale {
+    h3 {
+      text-align: center;
+    }
+  }
+
   section#time-travel {
 
     .container-fluid {
-      width: auto;
+      width: 90%;
 
       .card {
-
-        width: 80%;
+        width: 90% !important;
       }
+
     }
   }
 
@@ -317,34 +330,39 @@ section#work-morale {
     overflow: hidden;
 
     .container {
-      background-image: none;
-    }
+      border: none;
 
-    .nikon {
-      flex-direction: row;
+      .nikon {
+        flex-direction: row;
 
-      div {
-        flex-grow: 1;
+        div {
+          flex-grow: 1;
 
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
 
-      }
+        }
 
-      div.start {
-        background-image: url('../../../src/assets/nikon_bg1.jpg');
-        transform: skew(-10deg);
-      }
+        ul li {
+          padding: 0 10px;
+        }
 
-      div.inner {
-        background-image: url('../../../src/assets/nikon_bg2.jpg');
-        transform: skew(-10deg);
-      }
+        div.start {
+          background-image: url('../../../src/assets/nikon_bg1.jpg');
+          transform: skew(-10deg);
+        }
 
-      div.last {
-        background-image: url('../../../src/assets/nikon_bg3.jpg');
-        transform: skew(-10deg);
+        div.inner {
+          background-image: url('../../../src/assets/nikon_bg2.jpg');
+          transform: skew(-10deg);
+        }
+
+        div.last {
+          background-image: url('../../../src/assets/nikon_bg3.jpg');
+          transform: skew(-10deg);
+        }
+
       }
 
     }
