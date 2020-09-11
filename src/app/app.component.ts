@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {UserService} from './shared/user.service';
 import {UserModel} from './shared/user-model';
 import {Router} from '@angular/router';
+import {TestService} from './test.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,9 @@ export class AppComponent {
 
   constructor(private _userService: UserService,
               private _router: Router,
+              private readonly testService: TestService
   ) {
+    testService.sayHello();
     this._userService.detectTimeoutSession().subscribe(
       (response: any) => {
 
