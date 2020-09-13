@@ -4,11 +4,13 @@ import {RouterModule} from '@angular/router';
 
 import {NavbarComponent} from './navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
-import {MenuIndicatorComponent} from "./menu-indicator/menu-indicator.component";
+import {MenuIndicatorComponent} from './menu-indicator/menu-indicator.component';
 import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
 import {ScrollTopComponent} from './scroll-top/scroll-top.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
-import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+// import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
     CommonModule,
     RouterModule,
     CollapseModule.forRoot(),
-    BsDropdownModule.forRoot()
+    NgbModule,
+    // BsDropdownModule.forRoot()
   ],
   exports: [
     NavbarComponent,

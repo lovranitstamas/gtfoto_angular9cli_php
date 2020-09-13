@@ -15,12 +15,12 @@
 
   <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" dropdown>
+      <li class="nav-item dropdown-list" ngbDropdown>
         <a
           class="nav-link dropdown-toggle font-weight-bold"
-          dropdownToggle
-          id="navbarDropdownMenuLink">PORTFÓLIÓ</a>
-        <ul *dropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+
+          id="navbarDropdownMenuLink" ngbDropdownToggle>PORTFÓLIÓ</a>
+        <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" ngbDropdownMenu>
           <li *ngFor="let subMenuItem of items">
             <a class="dropdown-item"
                routerLink="/{{subMenuItem.mainMenu}}/{{subMenuItem.subMenu}}"
