@@ -45,6 +45,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       subMenu: 'kindergarten'
     },
     {
+      name: 'Karácsonyi fotók',
+      mainMenu: 'portfolio',
+      subMenu: 'christmas'
+    },
+    {
       name: 'Esküvői fotók',
       mainMenu: 'portfolio',
       subMenu: 'wedding'

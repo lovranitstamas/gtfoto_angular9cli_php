@@ -13,9 +13,11 @@ import {ChildAndFamilyListComponent} from './main-menu/child-and-family-list/chi
 import {PregnantListComponent} from './main-menu/pregnant-list/pregnant-list.component';
 import {ChristeningListComponent} from './main-menu/christening-list/christening-list.component';
 import {KindergartenListComponent} from './main-menu/kindergarten-list/kindergarten-list.component';
+import {ChristmasListComponent} from './main-menu/christmas-list/christmas-list.component';
 import {WeddingComponent} from './wedding/wedding.component';
 
 import {LoggedInGuard} from '../shared/logged-in.guard';
+
 
 export const portfolioRoutes: Routes = [
   {
@@ -26,6 +28,7 @@ export const portfolioRoutes: Routes = [
       {path: 'pregnant', component: PregnantListComponent},
       {path: 'christening', component: ChristeningListComponent},
       {path: 'kindergarten', component: KindergartenListComponent},
+      {path: 'christmas', component: ChristmasListComponent},
       {path: 'wedding', component: WeddingComponent, children: weddingChildRoutes},
       {path: 'new', component: PortfolioDetailComponent, canActivate: [LoggedInGuard]},
       {path: 'edit/:node/:id', component: PortfolioDetailComponent, canActivate: [LoggedInGuard]},
@@ -42,8 +45,9 @@ export const portfolioRoutes: Routes = [
     PregnantListComponent,
     ChristeningListComponent,
     KindergartenListComponent,
+    ChristmasListComponent,
 
-    WeddingComponent,
+    WeddingComponent
   ],
   imports: [
     CommonModule,

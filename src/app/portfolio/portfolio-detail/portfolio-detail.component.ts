@@ -91,7 +91,8 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
       {id: 10, category: 'Polgári szertartás'},
       {id: 11, category: 'Templomi szertartás'},
       {id: 12, category: 'Vacsora-buli'},
-      {id: 13, category: 'Esküvői pillanatképek'}
+      {id: 13, category: 'Esküvői pillanatképek'},
+      {id: 14, category: 'Karácsony'}
     ];
   }
 
