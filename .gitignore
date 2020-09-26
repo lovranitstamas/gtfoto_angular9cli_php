@@ -10,6 +10,9 @@
 /api
 /uploads
 /server_files
+*.psd
+*.pdf
+*.docx
 
 # dependencies
 /node_modules
