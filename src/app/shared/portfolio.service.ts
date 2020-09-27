@@ -125,4 +125,16 @@ export class PortfolioService {
       catchError(this.handleError)
     );
   }
+
+  getEmphasizedImagesList(): Observable<any[]>  {
+
+    return this._httpClient.get(`${this.apiUrl}getEmphasizedImagesList`, {
+      headers: this.setHeader()
+    }).pipe(
+      map((res) => {
+        this.photos = res['data'];
+        return this.photos;
+      }),
+      catchError(this.handleError));
+  }
 }

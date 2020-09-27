@@ -65,6 +65,36 @@
   </div>
 </section>
 
+<section id="emphased-pictures">
+  <div class="container">
+    <h2>Aktualitások</h2>
+    <ng-container *ngIf="!loading && !serverError; else loadingWarning">
+      <ng-container *ngIf="allPictures.length; else warningMessage">
+        <div class="picture-wrapper">
+          <div *ngFor="let picture of arrayOfFourItem;" class="picture-item">
+            <a [routerLink]="['/portfolio',picture.firstDirectParentCategoryEn,picture.categoryEn]"
+               *ngIf="picture.firstDirectParentCategoryEn!==''">
+              <img [alt]="picture.title" [src]="picture.fileURL" [title]="picture.title"></a>
+            <a [routerLink]="['/portfolio',picture.categoryEn]"
+               *ngIf="picture.firstDirectParentCategoryEn==''">
+              <img [alt]="picture.title" [src]="picture.fileURL" [title]="picture.title"></a>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #warningMessage>
+        <p class="array-of-four-item my-5 text-center">A rendszer jelenleg nem tartalmaz frissen feltöltött képet</p>
+        <app-loading-spinner [loaderWidth]="100" [loaderHeight]="100" class="mb-5"
+                             *ngIf="!serverError"></app-loading-spinner>
+      </ng-template>
+    </ng-container>
+    <ng-template #loadingWarning>
+      <app-loading-spinner [loaderWidth]="100" [loaderHeight]="100" class="mb-5"
+                           *ngIf="!serverError"></app-loading-spinner>
+    </ng-template>
+
+  </div>
+</section>
+
 <section id="time-travel">
   <div class="container-fluid">
     <h2>Vissza az időbe</h2>
@@ -117,7 +147,7 @@
             <p class="card-text">
               Ahol csak Ti vagytok a képeken.
               Kiváló alkalom arra, hogy megismerjük egymást jóval az esküvő előtt. Ha még nem vagytok rutinosak a
-              kamera  előtt, lehetőség van rá begyakorolni, hogy hogyan viselkedjetek természetesen egy fotózás közben.
+              kamera előtt, lehetőség van rá begyakorolni, hogy hogyan viselkedjetek természetesen egy fotózás közben.
             </p>
           </div>
           <div class="card-footer">

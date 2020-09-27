@@ -153,6 +153,62 @@ section#iframe-content {
   }
 }
 
+section#emphased-pictures {
+  .container {
+    min-height: 400px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    h2 {
+      margin: 0 0 15px 0;
+      color: $red;
+      font-weight: bold;
+
+    }
+
+    p.array-of-four-item {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .picture-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: space-around;
+
+      div.picture-item {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        cursor: pointer;
+        animation-name: fadeIn;
+        animation-duration: 5s;
+        opacity: 1;
+        border: 3px double $red;
+
+        img {
+          display: inline-block;
+          width: 300px;
+        }
+
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 section#time-travel {
   background-color: $grey;
 
@@ -284,9 +340,14 @@ section#work-morale {
     cursor: pointer;
   }
 
-  section#welcome {
+  section#welcome, section#iframe-content, section#emphased-pictures, section#time-travel, section#work-morale {
     h2 {
       font-size: 44px;
+    }
+  }
+
+  section#welcome {
+    h2 {
       padding-top: 0;
     }
 
@@ -304,15 +365,16 @@ section#work-morale {
     }
   }
 
-  section#iframe-content, section#time-travel, section#work-morale {
-    h2 {
-      font-size: 44px;
-    }
-  }
+  section#emphased-pictures {
+    .container {
 
-  section#work-morale {
-    h3 {
-      text-align: center;
+      div.picture-wrapper {
+        flex-direction: row;
+
+        div.picture-item {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
@@ -351,6 +413,10 @@ section#work-morale {
         div.last {
           background-image: url('../../../src/assets/nikon_bg3.jpg');
           transform: skew(-10deg);
+
+          h3 {
+            text-align: center;
+          }
         }
 
       }
