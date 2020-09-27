@@ -1,42 +1,70 @@
 export class PortfolioPictureModel {
-  private id: string;
-  private nodeId: string;
-  private subfolder: string;
-  private category: string;
+  private id: number | string;
+  private firstDirectParentCategoryId: number | string;
+  private firstDirectParentCategoryEn: string;
+  private firstDirectParentCategoryHu: string;
+  private categoryId: number | string;
+  private categoryEn: string;
+  private categoryHu: string;
   private title: string;
   private fileURL: string;
-  private createDate: string;
+  private yearOfEvent: number | string;
+  private latestPicture: boolean;
 
-  get idFunction(): string {
+  get idFunction(): number | string {
     return this.id;
   }
 
-  set idFunction(id: string) {
+  set idFunction(id: number | string) {
     this.id = id;
   }
 
-  get nodeIdFunction(): string {
-    return this.nodeId;
+  get firstDirectParentCategoryIdFunction(): number | string {
+    return this.firstDirectParentCategoryId;
   }
 
-  set nodeIdFunction(nodeId: string) {
-    this.nodeId = nodeId;
+  set firstDirectParentCategoryIdFunction(firstDirectParentCategoryId: number | string) {
+    this.firstDirectParentCategoryId = firstDirectParentCategoryId;
   }
 
-  get subfolderFunction(): string {
-    return this.subfolder;
+  get firstDirectParentCategoryEnFunction(): string {
+    return this.categoryEn;
   }
 
-  set subfolderFunction(subfolder: string) {
-    this.subfolder = subfolder;
+  set firstDirectParentCategoryEnFunction(firstDirectParentCategoryEn: string) {
+    this.categoryEn = firstDirectParentCategoryEn;
   }
 
-  get categoryFunction(): string {
-    return this.category;
+  get firstDirectParentCategoryHuFunction(): string {
+    return this.firstDirectParentCategoryHu;
   }
 
-  set categoryFunction(category: string) {
-    this.category = category;
+  set firstDirectParentCategoryHuFunction(firstDirectParentCategoryHu: string) {
+    this.firstDirectParentCategoryEn = firstDirectParentCategoryHu;
+  }
+
+  get categoryIdFunction(): number | string {
+    return this.categoryId;
+  }
+
+  set categoryIdFunction(categoryId: number | string) {
+    this.categoryId = categoryId;
+  }
+
+  get categoryEnFunction(): string {
+    return this.categoryEn;
+  }
+
+  set categoryEnFunction(categoryEn: string) {
+    this.categoryEn = categoryEn;
+  }
+
+  get categoryHuFunction(): string {
+    return this.categoryHu;
+  }
+
+  set categoryHuFunction(categoryHu: string) {
+    this.categoryHu = categoryHu;
   }
 
   get titleFunction(): string {
@@ -55,13 +83,23 @@ export class PortfolioPictureModel {
     this.fileURL = filename;
   }
 
-  get dateOfEventFunction(): string {
-    return this.createDate;
+  get yearOfEventFunction(): number | string {
+    return this.yearOfEvent;
   }
 
-  set dateOfEventFunction(createDate: string) {
-    this.createDate = createDate;
+  set yearOfEventFunction(yearOfEvent: number | string) {
+    this.yearOfEvent = yearOfEvent;
   }
+
+
+  get latestPictureFunction(): boolean {
+    return this.latestPicture;
+  }
+
+  set latestPictureFunction(latestPicture: boolean) {
+    this.latestPicture = latestPicture;
+  }
+
 
 }
 

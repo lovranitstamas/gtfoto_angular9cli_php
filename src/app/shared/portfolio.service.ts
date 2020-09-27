@@ -26,7 +26,7 @@ export class PortfolioService {
     return requestHeader;
   }
 
-  getPictureList(subfolder): Observable<PortfolioPictureModel[]> {
+  getPictureList(categoryEn): Observable<PortfolioPictureModel[]> {
     const headerDict = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -34,7 +34,7 @@ export class PortfolioService {
     };
 
     const requestParams = new HttpParams()
-      .set('subfolder', subfolder);
+      .set('categoryEn', categoryEn);
 
     /*const requestOptions = {
       headers: new HttpHeaders(headerDict),
@@ -54,11 +54,11 @@ export class PortfolioService {
   }
 
   // if i use any i can use the properties without function
-  getPortfolioById(pictureId, subfolder): Observable<PortfolioPictureModel> {
+  getPortfolioById(pictureId, categoryEn): Observable<PortfolioPictureModel> {
 
     const requestParams = new HttpParams()
       .set('id', pictureId)
-      .set('subfolder', subfolder);
+      .set('categoryEn', categoryEn);
 
     return this._httpClient.get<PortfolioPictureModel>(`${this.apiUrl}getPictureDatas`, {
       headers: this.setHeader(),
@@ -88,16 +88,21 @@ export class PortfolioService {
 
   update(picture: PortfolioPictureModel): Observable<PortfolioPictureModel[]> {
     return this._httpClient.put(`${this.apiUrl}updatePicture`, {data: picture}).pipe(map(() => {
+        console.log(picture.latestPictureFunction);
         const thePicure = this.photos.find((item) => {
           return +item['id'] === +picture.idFunction;
         });
         if (thePicure) {
-          thePicure['nodeId'] = picture.nodeIdFunction;
-          thePicure['subfolder'] = picture.subfolderFunction;
-          thePicure['category'] = picture.categoryFunction;
+          thePicure['firstDirectParentCategoryId'] = +picture.firstDirectParentCategoryIdFunction;
+          thePicure['firstDirectParentCategoryEn'] = picture.firstDirectParentCategoryEnFunction;
+          thePicure['firstDirectParentCategoryHu'] = picture.firstDirectParentCategoryHuFunction;
+          thePicure['categoryId'] = +picture.categoryIdFunction;
+          thePicure['categoryEn'] = picture.categoryEnFunction;
+          thePicure['categoryHu'] = picture.categoryHuFunction;
           thePicure['title'] = picture.titleFunction;
           thePicure['fileURL'] = picture.fileURLFunction;
-          thePicure['createDate'] = picture.dateOfEventFunction;
+          thePicure['yearOfEvent'] = +picture.yearOfEventFunction;
+          thePicure['latestPicture'] = picture.latestPictureFunction;
         }
         return this.photos;
       }),
@@ -107,13 +112,14 @@ export class PortfolioService {
   create(picture: PortfolioPictureModel, data: File) {
     const formData = new FormData();
     formData.append('title', picture.titleFunction);
-    formData.append('nodeId', picture.nodeIdFunction);
+    formData.append('categoryId', picture.categoryIdFunction.toString());
     formData.append('picture', data, data.name);
-    formData.append('createDate', picture.dateOfEventFunction);
+    formData.append('yearOfEvent', picture.yearOfEventFunction.toString());
+    picture.latestPictureFunction === true ? formData.append('latestPicture', (1).toString()) :
+      formData.append('latestPicture', (0).toString());
     const uploadURL = `${this.apiUrl}uploadPicture`;
     return this._httpClient.post(uploadURL, formData).pipe(map((res) => {
         this.photos.push(res['data']);
-        console.log(this.photos);
         return this.photos;
       }),
       catchError(this.handleError)

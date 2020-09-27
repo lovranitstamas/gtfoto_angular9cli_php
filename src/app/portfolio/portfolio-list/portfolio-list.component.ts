@@ -66,7 +66,7 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
                 } else {
                   return pictures.filter(
                     picture => {
-                      return picture.createDate.split('-', 3).indexOf(filterText.toLowerCase()) > -1;
+                      return (picture.yearOfEvent.toString() === filterText.toString()) && filterText.length === 4;
                     });
                 }
               }
@@ -83,12 +83,16 @@ export class PortfolioListComponent implements OnInit, OnDestroy {
             const picture = new PortfolioPictureModel();
 
             picture.idFunction = ev.id;
-            picture.nodeIdFunction = ev.nodeId;
-            picture.subfolderFunction = ev.subfolder;
-            picture.categoryFunction = ev.category;
+            picture.firstDirectParentCategoryIdFunction = ev.firstDirectParentCategoryId;
+            picture.firstDirectParentCategoryEnFunction = ev.firstDirectParentCategoryEn;
+            picture.firstDirectParentCategoryHuFunction = ev.firstDirectParentCategoryHu;
+            picture.categoryIdFunction = ev.categoryId;
+            picture.categoryEnFunction = ev.categoryEn;
+            picture.categoryHuFunction = ev.categoryHu;
             picture.titleFunction = ev.title;
-            picture.dateOfEventFunction = ev.createDate;
+            picture.yearOfEventFunction = ev.yearOfEvent;
             picture.fileURLFunction = ev.fileURL;
+            picture.latestPictureFunction = ev.latestPicture;
 
             this.allPictures.push(picture);
           });

@@ -31,30 +31,30 @@
             </div>
 
             <div class="form-group">
-              <label for="date">Esemény időpontja</label>
+              <label for="yearOfEvent">Esemény időpontja (1901 - 2155)</label>
               <input class="form-control mb-3"
-                     id="date"
+                     id="yearOfEvent"
                      placeholder="Esemény időpontja"
                      type="text"
-                     [(ngModel)]="portfolioPicture.dateOfEventFunction"
+                     [(ngModel)]="portfolioPicture.yearOfEventFunction"
                      required
-                     name="date"
-                     #date="ngModel"
+                     name="yearOfEvent"
+                     #yearOfEvent="ngModel"
                      [disabled]="viewForm"
                      #typeup>
 
-
-              <alert class="mt-1" type="danger" *ngIf="date.touched && date.invalid">Kötelező mező!</alert>
+              <alert class="mt-1" type="danger" *ngIf="yearOfEvent.touched && yearOfEvent.invalid">Kötelező mező!
+              </alert>
             </div>
 
             <div class="form-group">
-              <label for="nodeId">Almenü hozzárendelés</label>
+              <label for="categoryId">Almenü hozzárendelés</label>
               <select class="form-control mb-3"
-                      id="nodeId"
+                      id="categoryId"
                       required
-                      [(ngModel)]="portfolioPicture.nodeIdFunction"
+                      [(ngModel)]="portfolioPicture.categoryIdFunction"
                       name="nodeId"
-                      #node="ngModel"
+                      #categoryId="ngModel"
                       [disabled]="setNode"
               >
                 <option value="" selected>Kérem válasszon</option>
@@ -62,7 +62,18 @@
                         [value]="node.id">{{node.category}}
                 </option>
               </select>
-              <alert class="mt-1" type="danger" *ngIf="node.touched && node.invalid">Kötelező mező!</alert>
+              <alert class="mt-1" type="danger" *ngIf="categoryId.touched && categoryId.invalid">Kötelező mező!</alert>
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" class="form-check-input ml-1" id="latestPicture"
+                     [(ngModel)]="portfolioPicture.latestPictureFunction"
+                     [checked]="portfolioPicture.latestPictureFunction == true"
+                     (click)="changeValueOfLatestPicture()"
+                     [ngModelOptions]="{standalone: true}"
+                     [disabled]="viewForm">
+              <label for="latestPicture" class="ml-3 mt-1 ml-5">Kívánja-e megjeleníteni a képet a kezdőlapon, mint a legújabb képek
+                egyike?</label>
             </div>
 
             <div class="form-group">

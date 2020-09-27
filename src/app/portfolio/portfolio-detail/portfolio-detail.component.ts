@@ -42,12 +42,16 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
     // create an empty model while we wait for data
     this.portfolioPicture = new PortfolioPictureModel();
     this.portfolioPicture.idFunction = '';
-    this.portfolioPicture.nodeIdFunction = '';
-    this.portfolioPicture.subfolderFunction = '';
-    this.portfolioPicture.categoryFunction = '';
+    this.portfolioPicture.firstDirectParentCategoryIdFunction = '';
+    this.portfolioPicture.firstDirectParentCategoryEnFunction = '';
+    this.portfolioPicture.firstDirectParentCategoryHuFunction = '';
+    this.portfolioPicture.categoryIdFunction = '';
+    this.portfolioPicture.categoryHuFunction = '';
+    this.portfolioPicture.categoryEnFunction = '';
     this.portfolioPicture.titleFunction = '';
     this.portfolioPicture.fileURLFunction = '';
-    this.portfolioPicture.dateOfEventFunction = '';
+    this.portfolioPicture.yearOfEventFunction = '';
+    this.portfolioPicture.latestPictureFunction = true;
 
     // a method get true/false value in all case
     // from false to true oninit and set false from click
@@ -59,12 +63,16 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$))
         .subscribe((evm: any) => {
             this.portfolioPicture.idFunction = evm.id;
-            this.portfolioPicture.nodeIdFunction = evm.nodeId;
-            this.portfolioPicture.subfolderFunction = evm.subfolder;
-            this.portfolioPicture.categoryFunction = evm.category;
+            this.portfolioPicture.firstDirectParentCategoryIdFunction = evm.firstDirectParentCategoryId;
+            this.portfolioPicture.firstDirectParentCategoryEnFunction = evm.firstDirectParentCategoryEn;
+            this.portfolioPicture.firstDirectParentCategoryHuFunction = evm.firstDirectParentCategoryHu;
+            this.portfolioPicture.categoryIdFunction = evm.categoryId;
+            this.portfolioPicture.categoryEnFunction = evm.categoryEn;
+            this.portfolioPicture.categoryHuFunction = evm.categoryHu;
             this.portfolioPicture.titleFunction = evm.title;
             this.portfolioPicture.fileURLFunction = evm.fileURL;
-            this.portfolioPicture.dateOfEventFunction = evm.createDate;
+            this.portfolioPicture.yearOfEventFunction = evm.yearOfEvent;
+            this.portfolioPicture.latestPictureFunction = evm.latestPicture;
 
             this.setNode = true;
           },
@@ -161,7 +169,8 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
 
   setError(err) {
     this.serverError = true;
-    (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' : this.serverErrorMessage = 'Error code: ' + err.status;
+    (typeof err.status === 'number' && err.status === 0) || err.status === null ? this.serverErrorMessage = 'Unknow error' :
+      this.serverErrorMessage = 'Error code: ' + err.status;
   }
 
   private reInitEditMode() {
@@ -171,4 +180,8 @@ export class PortfolioDetailComponent implements OnInit, OnDestroy {
     }, 5000);
   }
 
+  changeValueOfLatestPicture() {
+    this.portfolioPicture.latestPictureFunction = !this.portfolioPicture.latestPictureFunction;
+    // https://morioh.com/p/287adab57c94
+  }
 }
