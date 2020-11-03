@@ -19,7 +19,7 @@
         <a
           class="nav-link dropdown-toggle font-weight-bold"
 
-          id="navbarDropdownMenuLink" ngbDropdownToggle>PORTFÓLIÓ</a>
+          id="navbarDropdownMenuLink" ngbDropdownToggle>{{ 'PORTFOLIO' | translate }}</a>
         <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" ngbDropdownMenu>
           <li *ngFor="let subMenuItem of items">
             <a class="dropdown-item"
@@ -29,17 +29,21 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" routerLink="/myservice" (click)="clickOnRouterLink()">SZOLGÁLTATÁSOK</a>
+        <a class="nav-link font-weight-bold" routerLink="/myservice" (click)="clickOnRouterLink()">{{ 'SERVICES' |
+          translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" routerLink="/about" (click)="clickOnRouterLink()">RÓLAM</a>
+        <a class="nav-link font-weight-bold" routerLink="/about"
+           (click)="clickOnRouterLink()">{{ 'ABOUT_ME' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-weight-bold" routerLink="/contact" (click)="clickOnRouterLink()">KAPCSOLAT</a>
+        <a class="nav-link font-weight-bold" routerLink="/contact"
+           (click)="clickOnRouterLink()">{{ 'CONTACT' | translate }}</a>
       </li>
       <ng-container *ngIf="!isLoggedIn; else loggedInBlock">
         <li class="nav-item">
-          <a class="nav-link font-weight-bold" routerLink="/user/login" (click)="clickOnRouterLink()">BELÉPÉS</a>
+          <a class="nav-link font-weight-bold" routerLink="/user/login" (click)="clickOnRouterLink()">{{ 'LOGIN' |
+            translate }}</a>
         </li>
         <!--<li class="nav-item">
           <a class="nav-link font-weight-bold" routerLink="/user/registration" (click)="clickOnRouterLink()">REGISZTRÁCIÓ</a>
@@ -47,7 +51,8 @@
       </ng-container>
       <ng-template #loggedInBlock>
         <li class="nav-item">
-          <a class="nav-link font-weight-bold" routerLink="/user" (click)="clickOnRouterLink()">PROFIL</a>
+          <a class="nav-link font-weight-bold" routerLink="/user"
+             (click)="clickOnRouterLink()">{{ 'PROFILE' | translate }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link font-weight-bold" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a>

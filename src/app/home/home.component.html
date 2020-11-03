@@ -2,59 +2,57 @@
 <carousel>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel1.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line init-title"><span>A legszebb pillanatokat</span></p>
-      <p class="init-subtitle"><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel
-        .</span></p>
+      <p class="first-line init-title"><span>{{ 'CAROUSEL_TITLE' | translate }}</span></p>
+      <p class="init-subtitle"><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel2.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line"><span>{{ 'CAROUSEL_TITLE' | translate }}</span></p>
+      <p><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel3.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line"><span>{{ 'CAROUSEL_TITLE' | translate }}</span></p>
+      <p><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel4.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line"><span>{{ 'CAROUSEL_TITLE"' | translate }}</span></p>
+      <p><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel5.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line"><span>{{ 'CAROUSEL_TITLE"' | translate }}</span></p>
+      <p><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
   <slide [ngStyle]="{ 'background-image': 'url(./assets/carousel6.jpg)' }">
     <div class="carousel-caption d-none d-md-block">
-      <p class="first-line"><span>A legszebb pillanatokat</span></p>
-      <p><span>egyedi stílusban, kreatív ötletekkel megörökítem, amikor mindenki Veletek ünnepel.</span></p>
+      <p class="first-line"><span>{{ 'CAROUSEL_TITLE"' | translate }}</span></p>
+      <p><span>{{ 'CAROUSEL_SUBTITLE' | translate }}</span></p>
     </div>
   </slide>
 </carousel>
 
 <section id="welcome">
   <div class="container">
-    <h2>Üdvözöllek a weboldalamon</h2>
+    <h2>{{ 'WELCOME' | translate }}</h2>
     <p>
-      Ha fotóst keresel, ha szeretnél magadról vagy családodról fotókat készíttetni, akkor jó
-      helyen jársz.
+      {{ 'WELCOME_IF_YOU_ARE_IN_LOOKING' | translate }}
     </p>
     <p>
-      Bármilyen felmerülő kérdés vagy kérés lenne, keress bizalommal!
+      {{ 'WELCOME_IF_YOU_ANY_QUESTION' | translate }}
     </p>
   </div>
 </section>
 
 <section id="iframe-content">
   <div class="container-fluid">
-    <h2>Egy kis kedvcsináló</h2>
+    <h2>{{ 'GET_THE_TASTE' | translate }}</h2>
     <div class="embed-responsive embed-responsive-16by9">
       <iframe
             allowfullscreen
@@ -67,7 +65,7 @@
 
 <section id="emphased-pictures">
   <div class="container">
-    <h2>Aktualitások</h2>
+    <h2>{{ 'NEWS' | translate }}</h2>
     <ng-container *ngIf="!loading && !serverError; else loadingWarning">
       <ng-container *ngIf="allPictures.length; else warningMessage">
         <div class="picture-wrapper">
@@ -97,23 +95,20 @@
 
 <section id="time-travel">
   <div class="container-fluid">
-    <h2>Vissza az időbe</h2>
+    <h2>{{ 'BACK_IN_TIME' | translate }}</h2>
     <div class="row">
       <div class="mb-4 mb-xl-0 col-12 col-sm-6 col-md-5 col-xl-3 mx-auto">
         <div class="card mx-auto">
           <div class="card-header"></div>
           <div class="card-body">
-            <h3 class="card-title text-center">PORTRÉ FOTÓK</h3>
+            <h3 class="card-title text-center">{{ 'PORTRAIT_PHOTOS' | translate }}</h3>
             <p class="card-text">
-              Korunkban a netes megjelenéshez, az önéletrajzhoz, a közösségi oldalakhoz elengedhetetlen a minőségi
-              fotó. Hiszen az arculat része, amit megszereténk mutatni magunkról a külvilág számára.
-              Ha bővíteni szeretnéd minőségi fotókkal portfóliódat, profilképed vagy üzleti portrédat,
-              keress bizalommal.
+              {{ 'PORTRAIT_PHOTOS_CONTENT' | translate }}
             </p>
           </div>
           <div class="card-footer">
             <button class="btn" type="button" [routerLink]="'../portfolio/portrait'">
-              Tovább
+              {{ 'NEXT' | translate }}
               <i class="fa fa-arrow-right"></i>
             </button>
           </div>
@@ -123,17 +118,14 @@
         <div class="card mx-auto">
           <div class="card-header"></div>
           <div class="card-body">
-            <h3 class="card-title text-center">CSALÁDI FOTÓK</h3>
+            <h3 class="card-title text-center">{{ 'FAMILY_PHOTOS' | translate }}</h3>
             <p class="card-text">
-              Imádom a nyári naplementéket, a fák suhogását, madarak csiripelését hallgatni, a természet közelségét.
-              A tökéletes fények, a különböző megvilágítások keresése mindig vonzó volt számomra. Ha a családi
-              albumodat szeretnéd gyarapítani - műteremben, természetes környezetben -, akkor itt az ideje
-              időpontot foglalnod.
+              {{ 'FAMILY_PHOTOS_CONTENT' | translate }}
             </p>
           </div>
           <div class="card-footer">
             <button class="btn pulse" type="button" [routerLink]="'../portfolio/child-and-family'">
-              Tovább
+              {{ 'NEXT' | translate }}
               <i class="fa fa-arrow-right"></i>
             </button>
           </div>
@@ -143,16 +135,14 @@
         <div class="card mx-auto">
           <div class="card-header"></div>
           <div class="card-body">
-            <h3 class="card-title">JEGYES FOTÓK</h3>
+            <h3 class="card-title">{{ 'WEDDING_PHOTOS' | translate }}</h3>
             <p class="card-text">
-              Ahol csak Ti vagytok a képeken.
-              Kiváló alkalom arra, hogy megismerjük egymást jóval az esküvő előtt. Ha még nem vagytok rutinosak a
-              kamera előtt, lehetőség van rá begyakorolni, hogy hogyan viselkedjetek természetesen egy fotózás közben.
+              {{ 'WEDDING_PHOTOS_CONTENT' | translate }}
             </p>
           </div>
           <div class="card-footer">
             <button class="btn" type="button" [routerLink]="'../portfolio/wedding/engaged'">
-              Tovább
+              {{ 'NEXT' | translate }}
               <i class="fa fa-arrow-right"></i>
             </button>
           </div>
@@ -162,17 +152,14 @@
         <div class="card mx-auto">
           <div class="card-header"></div>
           <div class="card-body">
-            <h3 class="card-title text-center">KREATÍV FOTÓK</h3>
+            <h3 class="card-title text-center">{{ 'CREATIVE_PHOTOS' | translate }}</h3>
             <p class="card-text">
-              Számomra is különleges dolog szerelmes párokat fotózni! Legyen az jegyes vagy kreatív fotózás.
-              Egy fotós, aki egész nap veletek lesz, figyeli a Ti és vendégek minden mozdulatát, az eseményeket,
-              miközben ő maga diszkréten a háttérben marad.
-              Célom, hogy évtizedek múlva is bele tudjatok feledkezni ezekben a képekben.
+              {{ 'CREATIVE_PHOTOS_CONTENT' | translate }}
             </p>
           </div>
           <div class="card-footer">
             <button class="btn" type="button" [routerLink]="'../portfolio/wedding/creative'">
-              Tovább
+              {{ 'NEXT' | translate }}
               <i class="fa fa-arrow-right"></i>
             </button>
           </div>
@@ -184,10 +171,10 @@
 
 <section id="work-morale">
   <div class="container">
-    <h2>Felszerelések</h2>
+    <h2>{{ 'EQUIPMENTS' | translate }}</h2>
     <div class="nikon">
       <div class="start">
-        <h3>2db Nikon D750 váz</h3>
+        <h3>{{ 'EQUIPMENTS_MACHINE' | translate }}</h3>
       </div>
       <div class="inner">
         <ul>
@@ -198,7 +185,7 @@
         </ul>
       </div>
       <div class="last">
-        <h3>egyéb kiegészítőkkel</h3>
+        <h3>{{ 'EQUIPMENTS_ACCESSORIES' | translate }}</h3>
       </div>
     </div>
   </div>

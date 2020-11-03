@@ -1,28 +1,28 @@
 <div class="container">
   <h2>
-    Impresszum
+    {{ 'IMPRESS_TITLE' | translate }}
   </h2>
 
   <div class="row owners">
     <div class="col-10 col-md-4">
-      <h3>Gál Tibor <br> (Tulajdonos) <br> </h3>
+      <h3>{{ 'IMPRESS_OWNER_NAME' | translate }}<br> ({{ 'IMPRESS_OWNER' | translate }}) <br> </h3>
       <ul>
-        <li>Egyéni vállalkozó</li>
-        <li>9421 Fertőrákos, Patak sor 43</li>
-        <li>Adószám: 69472075-1-28</li>
+        <li>{{ 'IMPRESS_SEL-EMPLOYED' | translate }}</li>
+        <li>{{ 'IMPRESS_OWNER_HOME_ADDRESS' | translate }}</li>
+        <li>{{ 'IMPRESS_OWNER_TAX_NUMBER' | translate }}: 69472075-1-28</li>
       </ul>
     </div>
     <div class="col-10 col-md-4">
-      <h3>Web-Server Kft. <br> (Tárhelyszolgáltató)</h3>
+      <h3>Web-Server Kft. <br> ({{ 'IMPRESS_HOSTING_PROVIDER' | translate }})</h3>
       <ul>
-        <li>4025 Debrecen, Pásti u. 2. 1/5.</li>
+        <li>{{ 'IMPRESS_HOSTING_ADDRESS' | translate }}</li>
         <li>info@web-server.hu</li>
       </ul>
     </div>
     <div class="col-10 col-md-4 content mx-auto">
-      <h3>Lovranits Tamás <br> (Webmester)</h3>
+      <h3>{{ 'CONTACT_NAME_OF_WEBMASTER' | translate }}<br> ({{ 'CONTACT_WEBMASTER' | translate }})</h3>
       <ul>
-        <li>Portfólió: <a href="https://lovranitstamas.eu/FRONTEND/oneletrajz/">lovranitstamas.eu</a></li>
+        <li>{{ 'IMPRESS_PORTFOLIO' | translate }}: <a href="https://lovranitstamas.eu/FRONTEND/oneletrajz/">lovranitstamas.eu</a></li>
         <li>tamas198601@gmail.com</li>
       </ul>
     </div>

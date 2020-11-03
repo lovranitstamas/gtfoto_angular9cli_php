@@ -7,7 +7,7 @@ import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // menu
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 
@@ -20,6 +20,12 @@ import {PortfolioService} from './shared/portfolio.service';
 import {ContactService} from './shared/contact.service';
 import {ImpressComponent} from './impress/impress.component';
 import {HttpsInterceptor} from './interceptor/https.interceptor';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +44,14 @@ import {HttpsInterceptor} from './interceptor/https.interceptor';
     ReactiveFormsModule,
     FormsModule,
     AlertModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     UserService,
@@ -53,4 +66,9 @@ import {HttpsInterceptor} from './interceptor/https.interceptor';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(translateService: TranslateService) {
+    translateService.setDefaultLang('hu');
+
+    translateService.use('hu');
+  }
 }
