@@ -3,6 +3,7 @@ import {UserService} from './shared/user.service';
 import {UserModel} from './shared/user-model';
 import {Router} from '@angular/router';
 import {TestService} from './test.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,12 @@ import {TestService} from './test.service';
 export class AppComponent {
   title = 'Gt fotó';
   private remoteUser: UserModel;
+  currentLang = 'hu';
 
   constructor(private _userService: UserService,
               private _router: Router,
-              private readonly testService: TestService
+              private readonly testService: TestService,
+              private _translateService: TranslateService
   ) {
     testService.sayHello();
     this._userService.detectTimeoutSession().subscribe(
@@ -36,5 +39,17 @@ export class AppComponent {
       }, () => {
         this._userService.setUserToInactive();
       });
+
+    this._translateService.onLangChange.subscribe((newLang) => {
+      this.currentLang = newLang.lang;
+    });
+  }
+
+  selectLang(lang: string, $event: MouseEvent) {
+    $event.stopPropagation();
+    $event.preventDefault();
+
+    this._translateService.use(lang);
+
   }
 }

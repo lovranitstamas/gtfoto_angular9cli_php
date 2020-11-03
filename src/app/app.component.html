@@ -1,7 +1,15 @@
 <header>
   <div class="container-fluid social-media">
     <div class="container">
-      <div class="slogan"><h1>{{ 'HEADER_SLOGAN' | translate }}</h1></div>
+      <div class="slogan">
+        <h1>{{ 'HEADER_SLOGAN' | translate }}</h1>
+        <a (click)="selectLang('hu',$event)" *ngIf="currentLang=='en'">
+          <img src="assets/hungarian.png" alt="hungarian-translate" height="30" class="mr-2">
+        </a>
+        <a (click)="selectLang('en',$event)" *ngIf="currentLang=='hu'">
+          <img src="assets/english.png" alt="english-translate" height="30" class="mr-2">
+        </a>
+      </div>
       <div class="icons">
         <ul>
           <li>

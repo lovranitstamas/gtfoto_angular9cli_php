@@ -10,7 +10,7 @@ import {ScrollTopComponent} from './scroll-top/scroll-top.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 // import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -31,15 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
     RouterModule,
     CollapseModule.forRoot(),
     NgbModule,
-    TranslateModule,
+    TranslateModule
     // BsDropdownModule.forRoot()
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    })
   ],
   exports: [
     NavbarComponent,
@@ -50,9 +43,4 @@ export function createTranslateLoader(http: HttpClient) {
   ]
 })
 export class CoreModule {
-  constructor(translateService: TranslateService) {
-    translateService.setDefaultLang('hu');
-
-    translateService.use('hu');
-  }
 }
