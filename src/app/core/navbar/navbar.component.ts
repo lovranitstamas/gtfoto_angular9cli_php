@@ -3,6 +3,7 @@ import {UserService} from '../../shared/user.service';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -56,12 +57,93 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(public userService: UserService, private _router: Router) {
+  constructor(public userService: UserService, private _router: Router, private _translateService: TranslateService) {
     this.userService.isLoggedIn$.subscribe(
       isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
       }
     );
+
+    this._translateService.onLangChange.subscribe((newLang) => {
+      switch (newLang.lang) {
+        case 'en':
+          this.items = [
+            {
+              name: 'Portrait photos',
+              mainMenu: 'portfolio',
+              subMenu: 'portrait'
+            },
+            {
+              name: 'Child-and family photos',
+              mainMenu: 'portfolio',
+              subMenu: 'child-and-family'
+            },
+            {
+              name: 'Mother-to-be photos',
+              mainMenu: 'portfolio',
+              subMenu: 'pregnant'
+            },
+            {
+              name: 'Baptism photos',
+              mainMenu: 'portfolio',
+              subMenu: 'christening'
+            },
+            {
+              name: 'Kindergarten photos',
+              mainMenu: 'portfolio',
+              subMenu: 'kindergarten'
+            },
+            {
+              name: 'Christmas photos',
+              mainMenu: 'portfolio',
+              subMenu: 'christmas'
+            },
+            {
+              name: 'Wedding photos',
+              mainMenu: 'portfolio',
+              subMenu: 'wedding'
+            }];
+          break;
+        case 'hu':
+          this.items = [
+            {
+              name: 'Portré fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'portrait'
+            },
+            {
+              name: 'Gyerek-és családi fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'child-and-family'
+            },
+            {
+              name: 'Kismama fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'pregnant'
+            },
+            {
+              name: 'Keresztelő fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'christening'
+            },
+            {
+              name: 'Óvodai gyerekfotók',
+              mainMenu: 'portfolio',
+              subMenu: 'kindergarten'
+            },
+            {
+              name: 'Karácsonyi fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'christmas'
+            },
+            {
+              name: 'Esküvői fotók',
+              mainMenu: 'portfolio',
+              subMenu: 'wedding'
+            }];
+          break;
+      }
+    });
   }
 
   @HostListener('window:scroll', [])
