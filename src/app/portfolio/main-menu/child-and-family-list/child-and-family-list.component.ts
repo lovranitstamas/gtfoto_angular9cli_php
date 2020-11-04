@@ -17,12 +17,12 @@ export class ChildAndFamilyListComponent {
         case 'hu':
           this.title = 'GYEREK-ÉS CSALÁDI FOTÓK';
           this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'GYEREKEK';
+          this.indicatorTitle = 'CSALÁD';
           break;
         case 'en':
           this.title = 'CHILD AND FAMILY PHOTOS';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'KIDS';
+          this.subtitle = 'I record the nicest moments of the most important day of your life.';
+          this.indicatorTitle = 'FAMILY';
           break;
       }
     });

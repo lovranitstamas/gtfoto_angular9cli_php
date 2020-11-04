@@ -79,7 +79,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
               subMenu: 'child-and-family'
             },
             {
-              name: 'Mother-to-be photos',
+              name: 'Pregnant photos',
               mainMenu: 'portfolio',
               subMenu: 'pregnant'
             },
@@ -99,7 +99,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
               subMenu: 'christmas'
             },
             {
-              name: 'Wedding photos',
+              name: 'Wedding',
               mainMenu: 'portfolio',
               subMenu: 'wedding'
             }];

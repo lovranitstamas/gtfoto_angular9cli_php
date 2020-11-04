@@ -1,7 +1,10 @@
-<app-portfolio-header title="KÉSZÜLŐDÉS"
-                      subtitle="Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.">
+<app-portfolio-header [title]="title"
+                      [subtitle]="subtitle">
 </app-portfolio-header>
-<app-breadcrumb category="Esküvő" submenu="Készülődés" dCategory="wedding" dSubmenu="preparation"></app-breadcrumb>
+<app-breadcrumb [category]="breadCrumbCategory" [submenu]="breadCrumbSubmenu"
+                dCategory="wedding"
+                dSubmenu="preparation">
+</app-breadcrumb>
 <app-portfolio-list node="preparation"></app-portfolio-list>
 
-<app-menu-indicator title="KÉSZÜLŐDÉS"></app-menu-indicator>
+<app-menu-indicator [title]="indicatorTitle"></app-menu-indicator>

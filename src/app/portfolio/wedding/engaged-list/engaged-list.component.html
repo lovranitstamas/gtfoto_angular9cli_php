@@ -1,9 +1,12 @@
-<app-portfolio-header title="JEGYES FOTÓK"
-                      subtitle="Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.">
+<app-portfolio-header [title]="title"
+                      [subtitle]="subtitle">
 </app-portfolio-header>
-<app-breadcrumb category="Esküvő" submenu="Jegyes fotók" dCategory="wedding" dSubmenu="engaged"></app-breadcrumb>
+<app-breadcrumb [category]="breadCrumbCategory" [submenu]="breadCrumbSubmenu"
+                dCategory="wedding"
+                dSubmenu="engaged">
+</app-breadcrumb>
 <app-portfolio-list node="engaged"></app-portfolio-list>
 
-<app-menu-indicator title="JEGYES FOTÓK"></app-menu-indicator>
+<app-menu-indicator [title]="indicatorTitle"></app-menu-indicator>
 
 

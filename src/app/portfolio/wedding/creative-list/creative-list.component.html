@@ -1,7 +1,10 @@
-<app-portfolio-header title="KREATÍV FOTÓK"
-                      subtitle="Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.">
+<app-portfolio-header [title]="title"
+                      [subtitle]="subtitle">
 </app-portfolio-header>
-<app-breadcrumb category="Esküvő" submenu="Kreatív fotók" dCategory="wedding" dSubmenu="creative"></app-breadcrumb>
+<app-breadcrumb [category]="breadCrumbCategory" [submenu]="breadCrumbSubmenu"
+                dCategory="wedding"
+                dSubmenu="creative">
+</app-breadcrumb>
 <app-portfolio-list node="creative"></app-portfolio-list>
 
-<app-menu-indicator title="KREATÍV FOTÓK"></app-menu-indicator>
+<app-menu-indicator [title]="indicatorTitle"></app-menu-indicator>

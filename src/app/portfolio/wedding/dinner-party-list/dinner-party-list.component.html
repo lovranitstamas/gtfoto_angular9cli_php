@@ -1,6 +1,10 @@
-<app-portfolio-header title="VACSORI-BULI"
-                      subtitle="Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait."></app-portfolio-header>
-<app-breadcrumb category="Esküvő" submenu="Vacsora-buli" dCategory="wedding" dSubmenu="dinner-party"></app-breadcrumb>
+<app-portfolio-header [title]="title"
+                      [subtitle]="subtitle">
+</app-portfolio-header>
+<app-breadcrumb [category]="breadCrumbCategory" [submenu]="breadCrumbSubmenu"
+                dCategory="wedding"
+                dSubmenu="dinner-party">
+</app-breadcrumb>
 <app-portfolio-list node="dinner-party"></app-portfolio-list>
 
-<app-menu-indicator title="BULI FOTÓK"></app-menu-indicator>
+<app-menu-indicator [title]="indicatorTitle"></app-menu-indicator>
