@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, Output} from '@angular/core';
 import {fromEvent} from 'rxjs';
 import {delay, distinctUntilChanged, map} from 'rxjs/operators';
+import {LangService} from '../../shared/lang.service';
 
 @Component({
   selector: 'app-portfolio-searching-box',
@@ -9,6 +10,22 @@ import {delay, distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class PortfolioSearchingBoxComponent implements AfterViewInit {
   @Output() valueChange = new EventEmitter();
+  search;
+
+  constructor(private _langService: LangService) {
+
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.search = 'Keresés évszám alapján';
+            break;
+          case 'en':
+            this.search = 'Search by year';
+            break;
+        }
+      });
+  }
 
   public ngAfterViewInit() {
     const input = document.querySelector('#search-input');
