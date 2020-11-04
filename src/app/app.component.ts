@@ -4,6 +4,7 @@ import {UserModel} from './shared/user-model';
 import {Router} from '@angular/router';
 import {TestService} from './test.service';
 import {TranslateService} from '@ngx-translate/core';
+import {LangService} from './shared/lang.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent {
   constructor(private _userService: UserService,
               private _router: Router,
               private readonly testService: TestService,
-              private _translateService: TranslateService
+              private _translateService: TranslateService,
+              private _langService: LangService
   ) {
     testService.sayHello();
     this._userService.detectTimeoutSession().subscribe(
@@ -41,6 +43,7 @@ export class AppComponent {
       });
 
     this._translateService.onLangChange.subscribe((newLang) => {
+      this._langService.setLanguage(newLang.lang);
       this.currentLang = newLang.lang;
     });
   }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LangService} from '../../../shared/lang.service';
 
 @Component({
   selector: 'app-preparation-list',
@@ -7,33 +7,34 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./preparation-list.component.scss']
 })
 export class PreparationListComponent {
-  title = 'KÉSZÜLŐDÉS';
-  subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-  indicatorTitle = 'KÉSZÜLŐDÉS';
+  title;
+  subtitle;
+  indicatorTitle;
 
-  breadCrumbCategory = 'Esküvő';
-  breadCrumbSubmenu = 'Polgári szertartás';
+  breadCrumbCategory;
+  breadCrumbSubmenu;
 
-  constructor(private _translateService: TranslateService) {
-    this._translateService.onLangChange.subscribe((newLang) => {
-      switch (newLang.lang) {
-        case 'hu':
-          this.title = 'KÉSZÜLŐDÉS';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'KÉSZÜLŐDÉS';
+  constructor(private _langService: LangService) {
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.title = 'KÉSZÜLŐDÉS';
+            this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
+            this.indicatorTitle = 'KÉSZÜLŐDÉS';
 
-          this.breadCrumbCategory = 'Esküvő';
-          this.breadCrumbSubmenu = 'Kreatív fotók';
-          break;
-        case 'en':
-          this.title = 'WEDDING PREPARATION';
-          this.subtitle = 'I record the nicest moments of the most important day of your life.';
-          this.indicatorTitle = 'PREPARATION';
+            this.breadCrumbCategory = 'Esküvő';
+            this.breadCrumbSubmenu = 'Kreatív fotók';
+            break;
+          case 'en':
+            this.title = 'WEDDING PREPARATION';
+            this.subtitle = 'I record the nicest moments of the most important day of your life.';
+            this.indicatorTitle = 'PREPARATION';
 
-          this.breadCrumbCategory = 'Wedding';
-          this.breadCrumbSubmenu = 'Preparation';
-          break;
-      }
-    });
+            this.breadCrumbCategory = 'Wedding';
+            this.breadCrumbSubmenu = 'Preparation';
+            break;
+        }
+      });
   }
 }

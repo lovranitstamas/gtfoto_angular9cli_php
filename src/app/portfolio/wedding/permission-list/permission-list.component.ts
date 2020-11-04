@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LangService} from '../../../shared/lang.service';
 
 @Component({
   selector: 'app-permission-list',
@@ -7,33 +7,34 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./permission-list.component.scss']
 })
 export class PermissionListComponent {
-  title = 'KI KÉRŐ';
-  subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-  indicatorTitle = 'KI KÉRŐ';
+  title;
+  subtitle;
+  indicatorTitle;
 
-  breadCrumbCategory = 'Esküvő';
-  breadCrumbSubmenu = 'Polgári szertartás';
+  breadCrumbCategory;
+  breadCrumbSubmenu;
 
-  constructor(private _translateService: TranslateService) {
-    this._translateService.onLangChange.subscribe((newLang) => {
-      switch (newLang.lang) {
-        case 'hu':
-          this.title = 'KI KÉRŐ';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'KI KÉRŐ';
+  constructor(private _langService: LangService) {
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.title = 'KI KÉRŐ';
+            this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
+            this.indicatorTitle = 'KI KÉRŐ';
 
-          this.breadCrumbCategory = 'Esküvő';
-          this.breadCrumbSubmenu = 'Kreatív fotók';
-          break;
-        case 'en':
-          this.title = 'REQUEST FOR BRIDE';
-          this.subtitle = 'I record the nicest moments of the most important day of your life.';
-          this.indicatorTitle = 'R. FOR BRIDE';
+            this.breadCrumbCategory = 'Esküvő';
+            this.breadCrumbSubmenu = 'Kreatív fotók';
+            break;
+          case 'en':
+            this.title = 'REQUEST FOR BRIDE';
+            this.subtitle = 'I record the nicest moments of the most important day of your life.';
+            this.indicatorTitle = 'R. FOR BRIDE';
 
-          this.breadCrumbCategory = 'Wedding';
-          this.breadCrumbSubmenu = 'Request for bride';
-          break;
-      }
-    });
+            this.breadCrumbCategory = 'Wedding';
+            this.breadCrumbSubmenu = 'Request for bride';
+            break;
+        }
+      });
   }
 }

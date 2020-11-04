@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LangService} from '../../../shared/lang.service';
 
 @Component({
   selector: 'app-pregnant-list',
@@ -7,25 +7,26 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./pregnant-list.component.scss']
 })
 export class PregnantListComponent {
-  title = 'KISMAMA FOTÓK';
-  subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-  indicatorTitle = 'KISMAMA';
+  title;
+  subtitle;
+  indicatorTitle;
 
-  constructor(private _translateService: TranslateService) {
-    this._translateService.onLangChange.subscribe((newLang) => {
-      switch (newLang.lang) {
-        case 'hu':
-          this.title = 'KISMAMA FOTÓK';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'KISMAMA';
-          break;
-        case 'en':
-          this.title = 'PREGNANT PHOTOS';
-          this.subtitle = 'I record the nicest moments of the most important day of your life.';
-          this.indicatorTitle = 'PREGNANT';
-          break;
-      }
-    });
+  constructor(private _langService: LangService) {
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.title = 'KISMAMA FOTÓK';
+            this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
+            this.indicatorTitle = 'KISMAMA';
+            break;
+          case 'en':
+            this.title = 'PREGNANT PHOTOS';
+            this.subtitle = 'I record the nicest moments of the most important day of your life.';
+            this.indicatorTitle = 'PREGNANT';
+            break;
+        }
+      });
   }
 
 }

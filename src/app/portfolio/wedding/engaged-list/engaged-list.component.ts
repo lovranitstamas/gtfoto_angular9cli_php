@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LangService} from '../../../shared/lang.service';
 
 @Component({
   selector: 'app-engaged-list',
@@ -7,33 +7,34 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./engaged-list.component.scss']
 })
 export class EngagedListComponent {
-  title = 'JEGYES FOTÓK';
-  subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-  indicatorTitle = 'ELJEGYZÉS';
+  title;
+  subtitle;
+  indicatorTitle;
 
-  breadCrumbCategory = 'Esküvő';
-  breadCrumbSubmenu = 'Polgári szertartás';
+  breadCrumbCategory;
+  breadCrumbSubmenu;
 
-  constructor(private _translateService: TranslateService) {
-    this._translateService.onLangChange.subscribe((newLang) => {
-      switch (newLang.lang) {
-        case 'hu':
-          this.title = 'JEGYES FOTÓK';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'ELJEGYZÉS';
+  constructor(private _langService: LangService) {
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.title = 'JEGYES FOTÓK';
+            this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
+            this.indicatorTitle = 'ELJEGYZÉS';
 
-          this.breadCrumbCategory = 'Esküvő';
-          this.breadCrumbSubmenu = 'Kreatív fotók';
-          break;
-        case 'en':
-          this.title = 'ENGAGEMENT PHOTOS';
-          this.subtitle = 'I record the nicest moments of the most important day of your life.';
-          this.indicatorTitle = 'ENGAGEMENT';
+            this.breadCrumbCategory = 'Esküvő';
+            this.breadCrumbSubmenu = 'Kreatív fotók';
+            break;
+          case 'en':
+            this.title = 'ENGAGEMENT PHOTOS';
+            this.subtitle = 'I record the nicest moments of the most important day of your life.';
+            this.indicatorTitle = 'ENGAGEMENT';
 
-          this.breadCrumbCategory = 'Wedding';
-          this.breadCrumbSubmenu = 'Engagement';
-          break;
-      }
-    });
+            this.breadCrumbCategory = 'Wedding';
+            this.breadCrumbSubmenu = 'Engagement';
+            break;
+        }
+      });
   }
 }

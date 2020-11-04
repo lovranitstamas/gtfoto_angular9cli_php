@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {LangService} from '../../../shared/lang.service';
 
 @Component({
   selector: 'app-dinner-party-list',
@@ -7,34 +7,35 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./dinner-party-list.component.scss']
 })
 export class DinnerPartyListComponent {
-  title = 'VACSORI-BULI';
-  subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-  indicatorTitle = 'BULI FOTÓK';
+  title;
+  subtitle;
+  indicatorTitle;
 
-  breadCrumbCategory = 'Esküvő';
-  breadCrumbSubmenu = 'Polgári szertartás';
+  breadCrumbCategory;
+  breadCrumbSubmenu;
 
-  constructor(private _translateService: TranslateService) {
-    this._translateService.onLangChange.subscribe((newLang) => {
-      switch (newLang.lang) {
-        case 'hu':
-          this.title = 'VACSORI-BULI';
-          this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
-          this.indicatorTitle = 'BULI FOTÓK';
+  constructor(private _langService: LangService) {
+    this._langService.lang$.subscribe(
+      lang => {
+        switch (lang) {
+          case 'hu':
+            this.title = 'VACSORI-BULI';
+            this.subtitle = 'Megörökítem életetek egyik legfontosabb napjának legszebb pillanatait.';
+            this.indicatorTitle = 'BULI FOTÓK';
 
-          this.breadCrumbCategory = 'Esküvő';
-          this.breadCrumbSubmenu = 'Kreatív fotók';
-          break;
-        case 'en':
-          this.title = 'PARTY PHOTOS';
-          this.subtitle = 'I record the nicest moments of the most important day of your life.';
-          this.indicatorTitle = 'PARTY';
+            this.breadCrumbCategory = 'Esküvő';
+            this.breadCrumbSubmenu = 'Kreatív fotók';
+            break;
+          case 'en':
+            this.title = 'PARTY PHOTOS';
+            this.subtitle = 'I record the nicest moments of the most important day of your life.';
+            this.indicatorTitle = 'PARTY';
 
-          this.breadCrumbCategory = 'Wedding';
-          this.breadCrumbSubmenu = 'Party';
-          break;
-      }
-    });
+            this.breadCrumbCategory = 'Wedding';
+            this.breadCrumbSubmenu = 'Party';
+            break;
+        }
+      });
   }
 }
 
